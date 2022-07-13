@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.active {
+  @apply bg-lime-500 text-white hover:bg-lime-600 hover:!text-white;
+}
+
 body {
   margin: 0;
   font-family:

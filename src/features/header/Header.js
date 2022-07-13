@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import { DiReact, DiRor } from 'react-icons/di';
+import NavbarLink from './NavbarLink';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -26,44 +27,19 @@ const Header = () => {
       <nav className="flex grow flex-col">
         <ul className="flex flex-col">
           <li>
-            <a
-              href="blah"
-              className="block bg-lime-600 py-3 px-4 text-lg font-bold uppercase text-white hover:bg-lime-500 active:bg-lime-700"
-            >
-              Mentors
-            </a>
+            <NavbarLink title="Mentors" to="/mentors" />
           </li>
           <li>
-            <a
-              href="blah"
-              className="block py-3 px-4 text-lg font-bold uppercase hover:text-lime-600"
-            >
-              Topics
-            </a>
+            <NavbarLink title="Topics" to="/topics" />
           </li>
           <li>
-            <a
-              href="blah"
-              className="block py-3 px-4 text-lg font-bold uppercase hover:text-lime-600"
-            >
-              Reservations
-            </a>
+            <NavbarLink title="Reservations" to="/reservations" />
           </li>
           <li>
-            <a
-              href="blah"
-              className="block py-3 px-4 text-lg font-bold uppercase hover:text-lime-600"
-            >
-              Add mentor
-            </a>
+            <NavbarLink title="Add Mentor" to="/mentors/new" />
           </li>
           <li>
-            <a
-              href="blah"
-              className="block py-3 px-4 text-lg font-bold uppercase hover:text-lime-600"
-            >
-              Add topic
-            </a>
+            <NavbarLink title="Add Topic" to="/topics/new" />
           </li>
         </ul>
       </nav>
