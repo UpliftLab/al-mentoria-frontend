@@ -22,8 +22,8 @@ const Header = () => {
       id="header"
       className={headerClasses + (open ? '' : ' -translate-x-52')}
     >
-      <a href="/" className="h-1/5 font-serif text-2xl font-bold text-center">
-        Al Mentoria
+      <a href="/" className="h-1/5 font-serif text-2xl font-bold text-center p-3">
+        <img src="/almentoria-full-logo.svg" className="w-24 m-auto" alt="" />
       </a>
       <nav className="flex grow flex-col pl-4">
         <ul className="flex flex-col">
