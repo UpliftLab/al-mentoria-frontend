@@ -13,7 +13,7 @@ import { DiReact, DiRor } from 'react-icons/di';
 const App = () => {
   const [open, setOpen] = useState(false);
 
-  const headerClasses = 'fixed md:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 pl-4 transition lg:translate-x-0';
+  const headerClasses = 'fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 pl-4 transition lg:translate-x-0';
 
   return (
     <div id="app" className="h-screen text-gray-700 flex">
@@ -107,7 +107,7 @@ const App = () => {
         <button
           id="menu-toggler"
           type="button"
-          className="absolute top-0 p-2 -right-[3.125rem] sstranslate-x-12 bg-white/90 lg:hidden hover:text-lime-600"
+          className="absolute top-0 p-2 -right-[3.125rem] bg-white/90 lg:hidden hover:text-lime-600"
           onClick={() => setOpen(!open)}
         >
           <BiMenu className="w-8 h-8" />
