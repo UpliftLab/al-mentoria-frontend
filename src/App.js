@@ -14,7 +14,7 @@ const App = () => (
       <Header />
       <main className="h-screen w-full overflow-y-scroll flex relative">
         <Routes>
-          <Route path="mentors" element={<Mentors />} />
+          <Route path="/mentors" element={<Mentors />} />
           <Route path="/mentors/new" element={<AddMentor />} />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/topics" element={<Topics />} />
