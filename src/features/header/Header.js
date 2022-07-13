@@ -10,6 +10,7 @@ import {
 import { BiMenu } from 'react-icons/bi';
 import { DiReact, DiRor } from 'react-icons/di';
 import NavbarLink from './NavbarLink';
+import SocialLink from './SocialLink';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -46,44 +47,19 @@ const Header = () => {
       <div className="flex flex-col gap-1 items-center">
         <ul className="flex">
           <li>
-            <a
-              href="blah"
-              className="inline-block p-1 hover:text-lime-600"
-            >
-              <FaTwitter className="w-4 h-4" />
-            </a>
+            <SocialLink to="blah" icon={<FaTwitter className="w-4 h-4" />} />
           </li>
           <li>
-            <a
-              href="blah"
-              className="inline-block p-1 hover:text-lime-600"
-            >
-              <FaFacebookF className="w-4 h-4" />
-            </a>
+            <SocialLink to="blah" icon={<FaFacebookF className="w-4 h-4" />} />
           </li>
           <li>
-            <a
-              href="blah"
-              className="inline-block p-1 hover:text-lime-600"
-            >
-              <FaInstagram className="w-4 h-4" />
-            </a>
+            <SocialLink to="blah" icon={<FaInstagram className="w-4 h-4" />} />
           </li>
           <li>
-            <a
-              href="blah"
-              className="inline-block p-1 hover:text-lime-600"
-            >
-              <FaGithub className="w-4 h-4" />
-            </a>
+            <SocialLink to="blah" icon={<FaGithub className="w-4 h-4" />} />
           </li>
           <li>
-            <a
-              href="blah"
-              className="inline-block p-1 hover:text-lime-600"
-            >
-              <FaYoutube className="w-4 h-4" />
-            </a>
+            <SocialLink to="blah" icon={<FaYoutube className="w-4 h-4" />} />
           </li>
         </ul>
         <p className="text-xs flex items-center gap-1">
