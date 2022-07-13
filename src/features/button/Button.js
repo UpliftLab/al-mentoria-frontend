@@ -6,14 +6,14 @@ const Button = ({
   isSubmit,
   isWhite,
 }) => {
-  const classesForGreen = 'bg-lime-500 text-white hover:bg-white hover:text-lime-500';
-  const classesForWhite = 'bg-white text-lime-500 hover:bg-lime-500 hover:text-white';
+  const classesForGreen = 'bg-lime-500 text-white hover:bg-lime-600';
+  const classesForWhite = 'bg-white text-lime-500 hover:bg-transparent hover:text-white hover:border-white';
 
   return (
     <button
       type={isSubmit ? 'submit' : 'button'}
       onClick={onClick}
-      className={`${isWhite ? classesForWhite : classesForGreen} px-6 py-3 rounded-full font-semibold min-w-[8rem] transition`}
+      className={`${isWhite ? classesForWhite : classesForGreen} px-6 py-2 rounded-full font-semibold min-w-[10rem] transition-colors border-2 border-transparent`}
     >
       {child}
     </button>
