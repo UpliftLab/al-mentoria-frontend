@@ -14,17 +14,17 @@ import NavbarLink from './NavbarLink';
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  const headerClasses = 'fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 pl-4 transition lg:translate-x-0';
+  const headerClasses = 'fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
 
   return (
     <header
       id="header"
       className={headerClasses + (open ? '' : ' -translate-x-52')}
     >
-      <a href="/" className="h-1/5 font-serif text-2xl font-bold">
+      <a href="/" className="h-1/5 font-serif text-2xl font-bold text-center">
         Al Mentoria
       </a>
-      <nav className="flex grow flex-col">
+      <nav className="flex grow flex-col pl-4">
         <ul className="flex flex-col">
           <li>
             <NavbarLink title="Mentors" to="/mentors" />
