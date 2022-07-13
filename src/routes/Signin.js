@@ -1,4 +1,4 @@
-import SigninForm from '../features/signinForm/SigninFrom';
+import SigninForm from '../features/user/SigninFrom';
 
 const Signin = () => (
   <section className="h-full w-full flex justify-center items-center">

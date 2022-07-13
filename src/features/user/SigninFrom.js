@@ -1,0 +1,81 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signinAsync } from './userSlice';
+
+const SigninForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+
+  const handleInput = (e) => {
+    if (e.target.id === 'email') {
+      setEmail(e.target.value);
+    } else {
+      setPassword(e.target.value);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signinAsync({ email, password }));
+  };
+
+  return (
+    <div className="w-full max-w-xs">
+      <form
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        onSubmit={(e) => handleSubmit(e)}
+      >
+        <label htmlFor="email" className="block mb-5">
+          <span className="block text-gray-700 text-sm font-bold mb-2">
+            Email
+          </span>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="email"
+            type="text"
+            onChange={handleInput}
+            placeholder="Email"
+          />
+          <small className="text-red-500 text-xs italic">
+            Please choose a Email.
+          </small>
+        </label>
+
+        <label htmlFor="password" className="block mb-5">
+          <span className="block text-gray-700 text-sm font-bold mb-2">
+            Password
+          </span>
+          <input
+            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            name="password"
+            type="password"
+            onChange={handleInput}
+            placeholder="******************"
+          />
+          <small className="text-red-500 text-xs italic">
+            Please choose a password.
+          </small>
+        </label>
+
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-lime-500 hover:bg-lime-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Sign In
+          </button>
+          <a
+            className="inline-block align-baseline font-bold text-sm text-lime-500 hover:text-lime-600"
+            href="/blah"
+          >
+            Forgot Password?
+          </a>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default SigninForm;

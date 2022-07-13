@@ -15,7 +15,7 @@ const App = () => (
       <Header />
       <main className="h-screen w-full overflow-y-scroll flex relative">
         <Routes>
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/sign_in" element={<Signin />} />
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/mentors/new" element={<AddMentor />} />
           <Route path="/reservations" element={<Reservations />} />
@@ -28,7 +28,7 @@ const App = () => (
     <aside>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar
         newestOnTop={false}
         closeOnClick
