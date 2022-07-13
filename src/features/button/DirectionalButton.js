@@ -15,7 +15,7 @@ const DirectionalButton = ({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={`bg-lime-500 py-4 text-white ${left ? classesForLeft : classesForRight} disabled:bg-gray-200 hover:bg-lime-600 transition-colors ${twClasses}`}
+      className={`bg-lime-500 py-4 text-white ${left ? classesForLeft : classesForRight} disabled:bg-gray-200 hover:bg-lime-400 transition-colors ${twClasses}`}
     >
       {left ? <BiLeftArrow /> : <BiRightArrow />}
     </button>

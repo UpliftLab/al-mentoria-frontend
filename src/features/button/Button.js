@@ -6,7 +6,7 @@ const Button = ({
   isSubmit,
   isWhite,
 }) => {
-  const classesForGreen = 'bg-lime-500 text-white hover:bg-lime-600';
+  const classesForGreen = 'bg-lime-500 text-white hover:bg-lime-400';
   const classesForWhite = 'bg-white text-lime-500 hover:bg-transparent hover:text-white hover:border-white';
 
   return (
