@@ -9,6 +9,8 @@ import {
 } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import { DiReact, DiRor } from 'react-icons/di';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -97,11 +99,11 @@ const App = () => {
             </li>
           </ul>
           <p className="text-xs flex items-center gap-1">
-            <FaHeart className="XXXXinline" title="Built with love" />
+            <FaHeart title="Built with love" />
             +
-            <DiRor className="XXXXinline" title="Built with Rails" />
+            <DiRor title="Built with Rails" />
             +
-            <DiReact className="XXXXinline" title="Built with Reactjs" />
+            <DiReact title="Built with Reactjs" />
           </p>
         </div>
         <button
@@ -117,6 +119,20 @@ const App = () => {
       <main className="h-screen w-full overflow-y-scroll">
         Page components come here
       </main>
+
+      <aside>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </aside>
     </div>
   );
 };
