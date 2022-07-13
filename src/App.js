@@ -9,10 +9,10 @@ import AddMentor from './routes/AddMentor';
 import AddTopic from './routes/AddTopic';
 
 const App = () => (
-  <div id="app" className="h-screen text-gray-700 flex">
+  <div id="app" className="h-screen text-gray-700 flex relative">
     <BrowserRouter>
       <Header />
-      <main className="h-screen w-full overflow-y-scroll flex">
+      <main className="h-screen w-full overflow-y-scroll flex relative">
         <Routes>
           <Route path="mentors" element={<Mentors />} />
           <Route path="/mentors/new" element={<AddMentor />} />

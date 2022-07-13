@@ -15,7 +15,7 @@ import SocialLink from './SocialLink';
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  const headerClasses = 'fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
+  const headerClasses = 'z-30 fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
 
   return (
     <header
