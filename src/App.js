@@ -7,6 +7,7 @@ import Reservations from './routes/Reservations';
 import Topics from './routes/Topics';
 import AddMentor from './routes/AddMentor';
 import AddTopic from './routes/AddTopic';
+import Signin from './routes/Signin';
 
 const App = () => (
   <div id="app" className="h-screen text-gray-700 flex relative">
@@ -14,6 +15,7 @@ const App = () => (
       <Header />
       <main className="h-screen w-full overflow-y-scroll flex relative">
         <Routes>
+          <Route path="/signin" element={<Signin />} />
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/mentors/new" element={<AddMentor />} />
           <Route path="/reservations" element={<Reservations />} />
