@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
   FaFacebookF,
   FaGithub,
@@ -73,27 +74,42 @@ const App = () => {
         <div className="flex flex-col gap-1 items-center">
           <ul className="flex">
             <li>
-              <a href="blah" className="inline-block p-1 hover:text-lime-600">
+              <a
+                href="blah"
+                className="inline-block p-1 hover:text-lime-600"
+              >
                 <FaTwitter className="w-4 h-4" />
               </a>
             </li>
             <li>
-              <a href="blah" className="inline-block p-1 hover:text-lime-600">
+              <a
+                href="blah"
+                className="inline-block p-1 hover:text-lime-600"
+              >
                 <FaFacebookF className="w-4 h-4" />
               </a>
             </li>
             <li>
-              <a href="blah" className="inline-block p-1 hover:text-lime-600">
+              <a
+                href="blah"
+                className="inline-block p-1 hover:text-lime-600"
+              >
                 <FaInstagram className="w-4 h-4" />
               </a>
             </li>
             <li>
-              <a href="blah" className="inline-block p-1 hover:text-lime-600">
+              <a
+                href="blah"
+                className="inline-block p-1 hover:text-lime-600"
+              >
                 <FaGithub className="w-4 h-4" />
               </a>
             </li>
             <li>
-              <a href="blah" className="inline-block p-1 hover:text-lime-600">
+              <a
+                href="blah"
+                className="inline-block p-1 hover:text-lime-600"
+              >
                 <FaYoutube className="w-4 h-4" />
               </a>
             </li>
@@ -117,7 +133,11 @@ const App = () => {
       </header>
 
       <main className="h-screen w-full overflow-y-scroll">
-        Page components come here
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<div>HomePage</div>} />
+          </Routes>
+        </BrowserRouter>
       </main>
 
       <aside>
