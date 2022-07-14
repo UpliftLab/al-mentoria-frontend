@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const signinAsync = createAsyncThunk(
-  'users/signin',
+  'user/signin',
   async ({ email, password }) => {
     const data = await signinRequest(email, password);
     return data;
