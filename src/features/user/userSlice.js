@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { signinRequest, signup } from './userApi';
+import { authenticate, signinRequest, signup } from './userApi';
 
 const initialState = {
   loading: false,
@@ -22,6 +22,14 @@ export const signupAsync = createAsyncThunk(
   async ({ name, email, password }) => {
     const data = await signup(name, email, password);
     return data;
+  },
+);
+
+export const authenticateAsync = createAsyncThunk(
+  'user/authenticate',
+  async (token) => {
+    const userData = await authenticate(token);
+    return userData;
   },
 );
 
@@ -50,6 +58,18 @@ const userSlice = createSlice({
     [signupAsync.fulfilled]: (state, action) => {
       state.loading = false;
       state.token = action.payload.data.token;
+    },
+    [authenticateAsync.pending]: (state) => {
+      state.loading = true;
+    },
+    [authenticateAsync.fulfilled]: (state, action) => {
+      const { data } = action.payload;
+      return {
+        ...state,
+        ...data,
+        isLoggedIn: true,
+        loading: false,
+      };
     },
   },
 });

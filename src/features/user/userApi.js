@@ -1,3 +1,4 @@
+import PersistData from '../../app/persistData';
 import CONFIG from '../../config.json';
 
 export async function signinRequest(email, password) {
@@ -21,6 +22,8 @@ export async function signinRequest(email, password) {
 
   try {
     const data = await response.json();
+    const storage = new PersistData('al-mentoria-data');
+    storage.set('token', data.data.token);
     return data;
   } catch (error) {
     throw new Error('Can not get JSON from the response');
@@ -50,6 +53,30 @@ export async function signup(name, email, password) {
 
   try {
     const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Can not get JSON from the response');
+  }
+}
+
+export async function authenticate(token) {
+  const endpoint = '/users/me';
+
+  const response = await fetch(CONFIG.BASE_URL + endpoint, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response || response.status !== 200) {
+    throw new Error('Can not sign in user with the provided Endpoint');
+  }
+
+  try {
+    const data = await response.json();
+    const storage = new PersistData('al-mentoria-data');
+    storage.set('token', data.data.token);
     return data;
   } catch (error) {
     throw new Error('Can not get JSON from the response');
