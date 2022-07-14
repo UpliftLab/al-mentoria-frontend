@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Button from '../button/Button';
 import { signinAsync } from './userSlice';
 
 const SigninForm = () => {
@@ -72,12 +73,7 @@ const SigninForm = () => {
         </label>
 
         <div className="flex items-center justify-between">
-          <button
-            className="bg-lime-500 hover:bg-lime-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Sign In
-          </button>
+          <Button child="Sign In" isSubmit />
           <a
             className="inline-block align-baseline font-bold text-sm text-lime-500 hover:text-lime-600"
             href="/blah"
