@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { signinAsync } from './userSlice';
 
 const SigninForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     if (e.target.id === 'email') {
@@ -17,7 +21,15 @@ const SigninForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signinAsync({ email, password }));
+    dispatch(signinAsync({ email, password }))
+      .unwrap()
+      .then(({ data }) => {
+        toast.success(`Hello ${data.name}. You are successfully logged in.`);
+        navigate('/');
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
