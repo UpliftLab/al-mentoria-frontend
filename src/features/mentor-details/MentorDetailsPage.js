@@ -17,10 +17,13 @@ const MentorDetailsPage = () => {
   );
   const { id } = useParams();
   useEffect(() => {
-    dispatch(fetchMentorAsync(id)).then(() => {
-      dispatch(fetchMentorDetailsAsync(id));
-    }).then(() => {
-      if (!mentorDetails.length) {
+    dispatch(fetchMentorAsync(id)).then((data) => {
+      dispatch(fetchMentorDetailsAsync(id)).then((data) => {
+        if (data.payload.length === 0) {
+          toast.error('No topics found for this mentor');
+        }
+      });
+      if (data.payload === undefined) {
         toast.error('Mentor not found');
         navigate('/mentors');
       }
@@ -94,11 +97,6 @@ const MentorDetailsPage = () => {
                     onClick={addReservation}
                   />
                 </div>
-              </div>
-            )}
-            {mentorDetails.length === 0 && (
-              <div className="flex justify-center">
-                <p className="text-center">Mentor not available</p>
               </div>
             )}
           </div>
