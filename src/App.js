@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './features/header/Header';
-import Mentors from './routes/Mentors';
+import MentorsPage from './routes/MentorsPage';
 import Reservations from './routes/Reservations';
 import Topics from './routes/Topics';
 import AddMentor from './routes/AddMentor';
@@ -40,12 +40,12 @@ const App = () => {
           <Routes>
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignunPage />} />
-            <Route path="/mentors" element={<Mentors />} />
+            <Route path="/mentors" element={<MentorsPage />} />
             <Route path="/mentors/new" element={<AddMentor />} />
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/topics/new" element={<AddTopic />} />
-            <Route path="*" element={<Mentors />} />
+            <Route path="*" element={<MentorsPage />} />
           </Routes>
         </main>
       </BrowserRouter>
