@@ -8,13 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './features/header/Header';
 import Mentors from './routes/Mentors';
 import Reservations from './routes/Reservations';
-import Topics from './routes/Topics';
 import AddMentor from './routes/AddMentor';
 import AddTopic from './routes/AddTopic';
 import SigninPage from './routes/SigninPage';
 import SignunPage from './routes/SignupPage';
 import PersistData from './app/persistData';
 import userSlice, { authenticateAsync } from './features/user/userSlice';
+import TopicsPage from './routes/TopicsPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const App = () => {
             <Route path="/mentors" element={<Mentors />} />
             <Route path="/mentors/new" element={<AddMentor />} />
             <Route path="/reservations" element={<Reservations />} />
-            <Route path="/topics" element={<Topics />} />
+            <Route path="/topics" element={<TopicsPage />} />
             <Route path="/topics/new" element={<AddTopic />} />
             <Route path="*" element={<Mentors />} />
           </Routes>
