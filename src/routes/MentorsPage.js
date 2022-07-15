@@ -11,7 +11,7 @@ const Mentors = () => (
 
     <hr className="mx-auto border-t-4 border-dotted w-32 my-8" />
 
-    <div className="grid place-content-center">
+    <div className="flex justify-center items-center">
       <MentorsList />
     </div>
   </section>
