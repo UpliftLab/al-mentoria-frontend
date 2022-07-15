@@ -6,7 +6,6 @@ import { BsStarFill, BsStar } from 'react-icons/bs';
 import Rating from 'react-rating';
 import { toast } from 'react-toastify';
 import {
-  fetchMentorDetailsAsync,
   fetchMentorAsync,
 } from './mentorDetailsSlice';
 import Button from '../button/Button';
@@ -15,15 +14,13 @@ import DirectionalButton from '../button/DirectionalButton';
 const MentorDetailsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { mentorDetails, mentor } = useSelector((state) => state.mentorDetails);
+  const { mentor } = useSelector((state) => state.mentorDetails);
   const { id } = useParams();
   useEffect(() => {
     dispatch(fetchMentorAsync(id)).then((data) => {
-      dispatch(fetchMentorDetailsAsync(id)).then((data) => {
-        if (data.payload?.length === 0 || data.payload === undefined) {
-          toast.error('No topics found for this mentor');
-        }
-      });
+      if (data.payload?.mentor_topics.length === 0) {
+        toast.error('No topics found for this mentor');
+      }
       if (data.payload === undefined) {
         toast.error('Mentor not found');
         navigate('/mentors');
@@ -55,10 +52,10 @@ const MentorDetailsPage = () => {
               {mentor.name}
             </h1>
             <p className="mb-10 text-center md:text-right">{mentor.bio}</p>
-            {mentorDetails !== undefined && mentorDetails.length > 0 && (
+            {mentor.mentor_topics.length > 0 && (
               <div className="flex flex-col grow">
                 <ul className="grow">
-                  {mentorDetails.map((mentorDetail) => (
+                  {mentor.mentor_topics.map((mentorDetail) => (
                     <li
                       key={mentorDetail.id}
                       className="odd:bg-gray-200 py-2 px-4"
