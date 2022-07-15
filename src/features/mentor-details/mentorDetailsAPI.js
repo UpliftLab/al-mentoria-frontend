@@ -1,4 +1,3 @@
-// A mock function to mimic making an async request for data
 import CONFIG from '../../config.json';
 
 const fetchMentor = async (mentorID) => {
