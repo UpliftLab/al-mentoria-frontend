@@ -24,7 +24,7 @@ import userSlice from '../user/userSlice';
 const Header = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  const { name, isLoggedIn } = useSelector((state) => state.user);
+  const { name, isLoggedIn, role } = useSelector((state) => state.user);
   const headerClasses = 'z-30 fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
 
   return (
@@ -50,15 +50,21 @@ const Header = () => {
           <li>
             <NavbarLink title="Topics" to="/topics" />
           </li>
-          <li>
-            <NavbarLink title="Reservations" to="/reservations" />
-          </li>
-          <li>
-            <NavbarLink title="Add Mentor" to="/mentors/new" />
-          </li>
-          <li>
-            <NavbarLink title="Add Topic" to="/topics/new" />
-          </li>
+          {isLoggedIn && (
+            <li>
+              <NavbarLink title="Reservations" to="/reservations" />
+            </li>
+          )}
+          {role === 'admin' && (
+            <>
+              <li>
+                <NavbarLink title="Add Mentor" to="/mentors/new" />
+              </li>
+              <li>
+                <NavbarLink title="Add Topic" to="/topics/new" />
+              </li>
+            </>
+          )}
 
           <li className="flex flex-col gap-1 mt-4 font-bold">
             {isLoggedIn ? (
