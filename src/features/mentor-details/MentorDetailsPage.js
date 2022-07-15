@@ -19,7 +19,7 @@ const MentorDetailsPage = () => {
   useEffect(() => {
     dispatch(fetchMentorAsync(id)).then((data) => {
       dispatch(fetchMentorDetailsAsync(id)).then((data) => {
-        if (data.payload.length === 0) {
+        if (data.payload?.length === 0 || data.payload === undefined) {
           toast.error('No topics found for this mentor');
         }
       });
@@ -56,8 +56,9 @@ const MentorDetailsPage = () => {
             <p className="mb-10 text-center md:text-right">
               {mentor.bio}
             </p>
-            {mentorDetails.length > 0 && (
+            {(mentorDetails !== undefined && mentorDetails.length > 0) && (
               <div className="flex flex-col grow">
+                {console.log(mentorDetails)}
                 <ul className="grow">
                   {mentorDetails.map((mentorDetail) => (
                     <li
