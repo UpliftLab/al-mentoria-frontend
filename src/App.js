@@ -13,7 +13,7 @@ const App = () => (
   <div id="app" className="h-screen text-gray-700 flex relative">
     <BrowserRouter>
       <Header />
-      <main className="h-screen w-full overflow-y-scroll flex relative">
+      <main className="h-screen w-full overflow-y-auto flex relative">
         <Routes>
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/mentors/new" element={<AddMentor />} />
