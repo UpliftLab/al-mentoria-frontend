@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import PersistData from '../../app/persistData';
 import { authenticate, signinRequest, signup } from './userApi';
 
 const initialState = {
@@ -37,7 +38,11 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    signOut: () => initialState,
+    signOut: () => {
+      const storage = new PersistData();
+      storage.remove('token');
+      return initialState;
+    },
   },
   extraReducers: {
     [signinAsync.pending]: (state) => {
@@ -45,6 +50,8 @@ const userSlice = createSlice({
     },
     [signinAsync.fulfilled]: (state, action) => {
       const { data } = action.payload;
+      const storage = new PersistData('al-mentoria-data');
+      storage.set('token', data.token);
       return {
         ...state,
         ...data,
@@ -55,9 +62,11 @@ const userSlice = createSlice({
     [signupAsync.pending]: (state) => {
       state.loading = true;
     },
-    [signupAsync.fulfilled]: (state, action) => {
+    [signupAsync.fulfilled]: (state) => {
       state.loading = false;
-      state.token = action.payload.data.token;
+    },
+    [signupAsync.rejected]: (state) => {
+      state.loading = false;
     },
     [authenticateAsync.pending]: (state) => {
       state.loading = true;
@@ -70,6 +79,9 @@ const userSlice = createSlice({
         isLoggedIn: true,
         loading: false,
       };
+    },
+    [authenticateAsync.rejected]: (state) => {
+      state.loading = false;
     },
   },
 });

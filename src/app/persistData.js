@@ -1,5 +1,5 @@
 class PersistData {
-  constructor(storageName = 'store', data = {}) {
+  constructor(storageName = 'al-mentoria-data', data = {}) {
     this.storageName = storageName;
     this.storage = this.load();
     this.save(data);
@@ -13,7 +13,8 @@ class PersistData {
   get = (key) => this.storage[key];
 
   remove = (key) => {
-    this.storage[key] = null;
+    this.storage[key] = '';
+    this.save();
   };
 
   load = () => JSON.parse(localStorage.getItem(this.storageName)) || {}

@@ -1,4 +1,3 @@
-import PersistData from '../../app/persistData';
 import CONFIG from '../../config.json';
 
 export async function signinRequest(email, password) {
@@ -22,8 +21,6 @@ export async function signinRequest(email, password) {
 
   try {
     const data = await response.json();
-    const storage = new PersistData('al-mentoria-data');
-    storage.set('token', data.data.token);
     return data;
   } catch (error) {
     throw new Error('Can not get JSON from the response');
@@ -75,8 +72,6 @@ export async function authenticate(token) {
 
   try {
     const data = await response.json();
-    const storage = new PersistData('al-mentoria-data');
-    storage.set('token', data.data.token);
     return data;
   } catch (error) {
     throw new Error('Can not get JSON from the response');

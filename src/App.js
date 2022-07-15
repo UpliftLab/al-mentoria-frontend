@@ -14,19 +14,20 @@ import AddTopic from './routes/AddTopic';
 import SigninPage from './routes/SigninPage';
 import SignunPage from './routes/SignupPage';
 import PersistData from './app/persistData';
-import { authenticateAsync } from './features/user/userSlice';
+import userSlice, { authenticateAsync } from './features/user/userSlice';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const storage = new PersistData('al-mentoria-data');
+    const storage = new PersistData();
     if (storage.get('token')) {
       dispatch(authenticateAsync(storage.get('token')))
         .unwrap()
         .then(() => { })
         .catch(() => {
           toast.error('You need to login again!');
+          dispatch(userSlice.actions.signOut());
         });
     }
   }, []);
