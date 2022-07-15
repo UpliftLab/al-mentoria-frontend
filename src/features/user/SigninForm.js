@@ -50,9 +50,6 @@ const SigninForm = () => {
             onChange={handleInput}
             placeholder="Email"
           />
-          <small className="text-red-500 text-xs italic">
-            Please choose a Email.
-          </small>
         </label>
 
         <label htmlFor="password" className="block mb-5">
@@ -60,16 +57,13 @@ const SigninForm = () => {
             Password
           </span>
           <input
-            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             name="password"
             type="password"
             onChange={handleInput}
             placeholder="******************"
           />
-          <small className="text-red-500 text-xs italic">
-            Please choose a password.
-          </small>
         </label>
 
         <div className="flex items-center justify-between">
