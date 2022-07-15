@@ -16,6 +16,7 @@ import {
 import { DiReact, DiRor } from 'react-icons/di';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import NavbarLink from './NavbarLink';
 import SocialLink from './SocialLink';
 import userSlice from '../user/userSlice';
@@ -23,8 +24,9 @@ import userSlice from '../user/userSlice';
 const Header = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  const headerClasses = 'z-30 fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
+  const { name, isLoggedIn } = useSelector((state) => state.user);
+  const headerClasses =
+    'z-30 fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
 
   return (
     <header
@@ -59,24 +61,31 @@ const Header = () => {
             <NavbarLink title="Add Topic" to="/topics/new" />
           </li>
 
-          <br />
-
-          <li className="flex flex-col gap-1">
+          <li className="flex flex-col gap-1 mt-4 font-bold">
             {isLoggedIn ? (
-              <button
-                className="flex gap-4 py-3 px-4 items-center"
-                type="button"
-                onClick={() => {
-                  dispatch(userSlice.actions.signOut());
-                }}
-              >
-                <BiLogOutCircle />
-                <span>Sign out</span>
-              </button>
+              <>
+                <p
+                  className="px-4 text-xs font-normal items-center"
+                  to="/signup"
+                >
+                  {`Signed in as ${name}!`}
+                </p>
+                <button
+                  className="flex gap-4 pt-1 pb-3 px-4 items-center hover:text-red-600 transition-colors"
+                  type="button"
+                  onClick={() => {
+                    dispatch(userSlice.actions.signOut());
+                    toast.success('Successfully signed out');
+                  }}
+                >
+                  <BiLogOutCircle />
+                  <span>Sign out</span>
+                </button>
+              </>
             ) : (
               <>
                 <Link
-                  className="flex gap-4 py-3 px-4 items-center justify-start"
+                  className="flex gap-4 py-3 px-4 items-center hover:text-lime-500 transition-colors"
                   title=""
                   to="/signin"
                 >
@@ -85,7 +94,7 @@ const Header = () => {
                 </Link>
 
                 <Link
-                  className="flex gap-4 py-3 px-4 items-center"
+                  className="flex gap-4 py-3 px-4 items-center hover:text-lime-500 transition-colors"
                   to="/signup"
                 >
                   <BiUserPlus />
