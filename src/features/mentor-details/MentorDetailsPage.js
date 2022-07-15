@@ -5,16 +5,17 @@ import { IoIosArrowDropright } from 'react-icons/io';
 import { BsStarFill, BsStar } from 'react-icons/bs';
 import Rating from 'react-rating';
 import { toast } from 'react-toastify';
-import { fetchMentorDetailsAsync, fetchMentorAsync } from './mentorDetailsSlice';
+import {
+  fetchMentorDetailsAsync,
+  fetchMentorAsync,
+} from './mentorDetailsSlice';
 import Button from '../button/Button';
 import DirectionalButton from '../button/DirectionalButton';
 
 const MentorDetailsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { mentorDetails, mentor } = useSelector(
-    (state) => state.mentorDetails,
-  );
+  const { mentorDetails, mentor } = useSelector((state) => state.mentorDetails);
   const { id } = useParams();
   useEffect(() => {
     dispatch(fetchMentorAsync(id)).then((data) => {
@@ -53,12 +54,9 @@ const MentorDetailsPage = () => {
             <h1 className="text-center md:text-right font-bold text-2xl">
               {mentor.name}
             </h1>
-            <p className="mb-10 text-center md:text-right">
-              {mentor.bio}
-            </p>
-            {(mentorDetails !== undefined && mentorDetails.length > 0) && (
+            <p className="mb-10 text-center md:text-right">{mentor.bio}</p>
+            {mentorDetails !== undefined && mentorDetails.length > 0 && (
               <div className="flex flex-col grow">
-                {console.log(mentorDetails)}
                 <ul className="grow">
                   {mentorDetails.map((mentorDetail) => (
                     <li
@@ -69,9 +67,7 @@ const MentorDetailsPage = () => {
                         <div className="w-12 mr-2">
                           <img src={mentorDetail.topic.icon} alt="Topic" />
                         </div>
-                        <h3 className="grow">
-                          {mentorDetail.topic.label}
-                        </h3>
+                        <h3 className="grow">{mentorDetail.topic.label}</h3>
                         <div>
                           <Rating
                             step="0.5"
@@ -89,12 +85,14 @@ const MentorDetailsPage = () => {
                 </ul>
                 <div className="my-10 flex justify-center">
                   <Button
-                    child={(
-                      <div className="flex items-center gap-3 justify-center">
-                        <p>Book now</p>
-                        <IoIosArrowDropright size={20} />
-                      </div>
-                    )}
+                    child={
+                      (
+                        <div className="flex items-center gap-3 justify-center">
+                          <p>Book now</p>
+                          <IoIosArrowDropright size={20} />
+                        </div>
+                      )
+                    }
                     onClick={addReservation}
                   />
                 </div>
@@ -103,7 +101,11 @@ const MentorDetailsPage = () => {
           </div>
         </div>
       )}
-      <DirectionalButton left twClasses="hidden md:block fixed md:absolute left-0 bottom-10" onClick={goBack} />
+      <DirectionalButton
+        left
+        twClasses="hidden md:block fixed md:absolute left-0 bottom-10"
+        onClick={goBack}
+      />
     </div>
   );
 };
