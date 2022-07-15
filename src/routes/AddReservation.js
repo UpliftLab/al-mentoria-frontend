@@ -1,3 +1,5 @@
+import Button from '../features/button/Button';
+
 const AddMentor = () => (
   <div id="add-mentor-page">
     <div className="bg-cover absolute inset-0" style={{ backgroundImage: 'url(https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop)' }} />
@@ -10,6 +12,9 @@ const AddMentor = () => (
         it has a more-or-less normal distribution of letters, as opposed to using making it
         look like readable English.
       </p>
+      <div className="flex">
+        <Button onClick={() => {}} child="Book Now" isWhite />
+      </div>
     </div>
   </div>
 );
