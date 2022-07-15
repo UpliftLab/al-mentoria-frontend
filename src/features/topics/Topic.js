@@ -9,7 +9,7 @@ Topic.propTypes = {
 };
 
 Topic.defaultProps = {
-  text: 'my type',
+  text: 'my topic',
 };
 
 export default Topic;

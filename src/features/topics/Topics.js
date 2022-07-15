@@ -1,14 +1,20 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Topic from './Topic';
+import { getTopicsAsync } from './topicSlice';
 
 const Topics = () => {
-  let topicsArr = new Array(10).fill(0);
-  topicsArr = topicsArr.map((_, i) => [i, `Topic ${i}`]);
+  const { topics } = useSelector((state) => state.topic);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTopicsAsync());
+  }, []);
 
   return (
-    <div>
+    <div className="flex flex-col m-12 justify-center items-center">
       {
-        topicsArr.map(([topic, i]) => (
-          <Topic key={i} text={topic} />
+        topics.map((topic) => (
+          <Topic key={topic.id} text={topic.label} />
         ))
       }
     </div>
