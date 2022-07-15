@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import { DiReact, DiRor } from 'react-icons/di';
+import { Link } from 'react-router-dom';
 import NavbarLink from './NavbarLink';
 import SocialLink from './SocialLink';
 
@@ -22,9 +23,16 @@ const Header = () => {
       id="header"
       className={headerClasses + (open ? '' : ' -translate-x-52')}
     >
-      <a href="/" className="h-1/5 font-serif text-2xl font-bold text-center p-3">
-        <img src="/almentoria-full-logo.svg" className="w-24 m-auto" alt="" />
-      </a>
+      <Link
+        to="/"
+        className="h-1/5 font-serif text-2xl font-bold text-center p-3"
+      >
+        <img
+          src="/almentoria-full-logo.svg"
+          className="w-24 m-auto"
+          alt="al mentoria"
+        />
+      </Link>
       <nav className="flex grow flex-col pl-4">
         <ul className="flex flex-col">
           <li>
