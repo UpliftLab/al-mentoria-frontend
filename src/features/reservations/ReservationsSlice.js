@@ -6,7 +6,7 @@ const initialState = {
     data: [],
   },
   status: 'idle',
-}
+};
 
 export const fetchReservationsAsync = createAsyncThunk(
   'reservations/fetchReservations',
@@ -25,12 +25,13 @@ export const reservationsSlice = createSlice({
     },
     [fetchReservationsAsync.fulfilled]: (state, action) => {
       state.status = 'success';
-      state.reservations = action.payload;
+      state.reservations.data = action.payload;
+      console.log(action.payload);
     },
     [fetchReservationsAsync.rejected]: (state) => {
       state.status = 'error';
-    }
-  }
+    },
+  },
 });
 
 export default reservationsSlice.reducer;
