@@ -47,9 +47,6 @@ const Header = () => {
           <li>
             <NavbarLink title="Mentors" to="/mentors" />
           </li>
-          <li>
-            <NavbarLink title="Topics" to="/topics" />
-          </li>
           {isLoggedIn && (
             <li>
               <NavbarLink title="Reservations" to="/reservations" />
@@ -59,6 +56,9 @@ const Header = () => {
             <>
               <li>
                 <NavbarLink title="Add Mentor" to="/mentors/new" />
+              </li>
+              <li>
+                <NavbarLink title="Topics" to="/topics" />
               </li>
               <li>
                 <NavbarLink title="Add Topic" to="/topics/new" />
