@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import fetchMentor from './mentorDetailsAPI';
 
 const initialState = {
-  mentorDetails: [],
   mentor: null,
   status: 'idle',
 };
