@@ -1,4 +1,5 @@
 import Button from '../features/button/Button';
+import DropDownButton from '../features/button/DropDownButton';
 
 const AddMentor = () => (
   <div id="add-mentor-page">
@@ -12,7 +13,8 @@ const AddMentor = () => (
         it has a more-or-less normal distribution of letters, as opposed to using making it
         look like readable English.
       </p>
-      <div className="flex">
+      <div className="flex mt-4 gap-6">
+        <DropDownButton options={['topics', 'here']} onChange={() => { }} />
         <Button onClick={() => {}} child="Book Now" isWhite />
       </div>
     </div>
