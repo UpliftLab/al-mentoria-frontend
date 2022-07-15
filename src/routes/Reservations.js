@@ -1,3 +1,5 @@
-const Reservations = () => (<div>Reservations Page</div>);
+import ReservationsPage from '../features/reservations/ReservationsPage';
+
+const Reservations = () => (<ReservationsPage />);
 
 export default Reservations;
