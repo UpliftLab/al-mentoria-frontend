@@ -17,15 +17,17 @@ const MentorDetailsPage = () => {
   const { mentor } = useSelector((state) => state.mentorDetails);
   const { id } = useParams();
   useEffect(() => {
-    dispatch(fetchMentorAsync(id)).then((data) => {
-      if (data.payload?.mentor_topics.length === 0) {
-        toast.error('No topics found for this mentor');
-      }
-      if (data.payload === undefined) {
-        toast.error('Mentor not found');
-        navigate('/mentors');
-      }
-    });
+    dispatch(fetchMentorAsync(id))
+      .unwrap()
+      .then((data) => {
+        if (data?.mentor_topics.length === 0) {
+          toast.error('No topics found for this mentor');
+        }
+        if (data === undefined) {
+          toast.error('Mentor not found');
+          navigate('/mentors');
+        }
+      });
   }, []);
 
   const goBack = () => {
