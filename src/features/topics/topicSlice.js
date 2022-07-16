@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import userSlice from '../user/userSlice';
 import getTopicsFromApi from './topicApi';
 
 const initialState = {
@@ -8,8 +9,8 @@ const initialState = {
 
 export const getTopicsAsync = createAsyncThunk(
   'topics/getTopics',
-  async () => {
-    const data = await getTopicsFromApi();
+  async (token) => {
+    const data = await getTopicsFromApi(token);
     return data;
   },
 );
@@ -29,6 +30,7 @@ const topicSlice = createSlice({
     [getTopicsAsync.rejected]: (state) => {
       state.loading = false;
     },
+    [userSlice.actions.signOut]: () => initialState,
   },
 });
 
