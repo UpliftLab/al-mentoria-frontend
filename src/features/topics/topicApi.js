@@ -1,15 +1,12 @@
-import PersistData from '../../app/persistData';
 import CONFIG from '../../config.json';
 
-const storage = new PersistData();
-
-export default async function getTopicsFromApi() {
+export default async function getTopicsFromApi(token) {
   const endpoint = '/topics';
 
   const response = await fetch(CONFIG.BASE_URL + endpoint, {
-    method: 'post',
+    method: 'get',
     headers: {
-      Authorization: `Bearer ${storage.get('token')}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   });

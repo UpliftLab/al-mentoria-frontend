@@ -4,49 +4,39 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Topic from './Topic';
 import { getTopicsAsync } from './topicSlice';
-import userSlice, { authenticateAsync } from '../user/userSlice';
+import { userStatus } from '../user/userSlice';
 
 const Topics = () => {
   const { topics } = useSelector((state) => state.topic);
-  const { token, isLoggedIn } = useSelector((state) => state.user);
+  const { token, status, role } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(getTopicsAsync(token))
-        .unwrap()
-        .then(() => {
-          toast.success('successfully fetched topics');
-        })
-        .catch((error) => {
-          toast.error(error.message);
-          navigate('/');
-        });
-    } else if (token) {
-      dispatch(authenticateAsync(token))
-        .unwrap()
-        .then(() => {
-          toast.success('authenticated!');
-          dispatch(getTopicsAsync(token))
-            .unwrap()
-            .then(() => {
-              toast.success('successfully fetched topics');
-            })
-            .catch((error) => {
-              toast.error(error.message);
-              navigate('/');
-            });
-        })
-        .catch(() => {
-          toast.error('You need to login!');
-          dispatch(userSlice.actions.signOut());
-        });
-    } else {
+    if (
+      status === userStatus.unauthenticated
+      || status === userStatus.rejected
+      || status === userStatus.failed
+    ) {
       toast.error('You need to login!');
       navigate('/signin');
+    } else if (status === userStatus.authenticated) {
+      if (role === 'admin') {
+        dispatch(getTopicsAsync(token))
+          .unwrap()
+          .then(() => {
+            toast.success('successfully fetched topics');
+          })
+          .catch((error) => {
+            navigate('/');
+            toast.error(error.message);
+          });
+      } else {
+        navigate('/');
+        toast.error('You are not authorized');
+      }
     }
-  }, [token]);
+  }, [status]);
 
   return (
     <div className="flex flex-col m-12 justify-center items-center">
