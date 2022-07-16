@@ -61,9 +61,6 @@ const Header = () => {
               <li>
                 <NavbarLink title="Topics" to="/topics" />
               </li>
-              <li>
-                <NavbarLink title="Add Topic" to="/topics/new" />
-              </li>
             </>
           )}
 
