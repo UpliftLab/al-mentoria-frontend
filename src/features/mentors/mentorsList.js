@@ -25,18 +25,6 @@ const MentorsList = () => {
     }
   }, []);
 
-  if (['INITIALIZED', 'FETCHING'].includes(status)) {
-    return (
-      <Loading />
-    );
-  }
-
-  if (['FAILED'].includes(status)) {
-    return (
-      <>Failed to fetch mentors!</>
-    );
-  }
-
   const responsive = {
     0: { items: 1 },
     640: { items: 2 },
@@ -72,15 +60,23 @@ const MentorsList = () => {
   ));
 
   return (
-    <AliceCarousel
-      mouseTracking
-      disableDotsControls
-      renderPrevButton={({ isDisabled }) => <DirectionalButton twClasses="absolute top-28 left-0" left disabled={isDisabled} />}
-      renderNextButton={({ isDisabled }) => <DirectionalButton twClasses="absolute top-28 right-0" disabled={isDisabled} />}
-      responsive={responsive}
-      items={items}
-      className="bg-red-500"
-    />
+    <>
+      {['INITIALIZED', 'FETCHING'].includes(status) && <Loading />}
+      {['FAILED'].includes(status) && <>Failed to fetch mentors!</>}
+      {(status === 'FETCHED' && mentors.length === 0) && <>Currently no mentor is available!</>}
+
+      {(status === 'FETCHED' && mentors.length) && (
+        <AliceCarousel
+          mouseTracking
+          disableDotsControls
+          renderPrevButton={({ isDisabled }) => <DirectionalButton twClasses="absolute top-28 left-0" left disabled={isDisabled} />}
+          renderNextButton={({ isDisabled }) => <DirectionalButton twClasses="absolute top-28 right-0" disabled={isDisabled} />}
+          responsive={responsive}
+          items={items}
+          className="bg-red-500"
+        />
+      )}
+    </>
   );
 };
 
