@@ -15,7 +15,7 @@ import {
 } from 'react-icons/bi';
 import { DiReact, DiRor } from 'react-icons/di';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useNavigate } from 'react-redux';
 import { toast } from 'react-toastify';
 import NavbarLink from './NavbarLink';
 import SocialLink from './SocialLink';
@@ -24,6 +24,7 @@ import userSlice from '../user/userSlice';
 const Header = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { name, isLoggedIn, role } = useSelector((state) => state.user);
   const headerClasses = 'z-30 fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
 
@@ -80,6 +81,7 @@ const Header = () => {
                   type="button"
                   onClick={() => {
                     dispatch(userSlice.actions.signOut());
+                    navigate('/');
                     toast.success('Successfully signed out');
                   }}
                 >

@@ -2,10 +2,21 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import PersistData from '../../app/persistData';
 import { authenticate, signinRequest, signup } from './userApi';
 
+export const userStatus = {
+  initialized: 'INITIALIZED',
+  unauthenticated: 'UNAUTHENTICATED',
+  authenticating: 'AUTHENTICATING',
+  authenticated: 'AUTHENTICATED',
+  rejected: 'REJECTED',
+  failed: 'FAILED',
+};
+
+const storage = new PersistData();
+
 const initialState = {
-  loading: false,
+  status: userStatus.initialized,
   isLoggedIn: false,
-  token: '',
+  token: storage.get('token'),
   name: '',
   role: '',
 };
@@ -39,24 +50,28 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     signOut: () => {
-      const storage = new PersistData();
       storage.remove('token');
-      return initialState;
+      return {
+        ...initialState,
+        status: userStatus.unauthenticated,
+      };
+    },
+    setUnauthenticated: (state) => {
+      state.status = userStatus.unauthenticated;
     },
   },
   extraReducers: {
     [signinAsync.pending]: (state) => {
-      state.loading = true;
+      state.status = userStatus.authenticating;
     },
     [signinAsync.fulfilled]: (state, action) => {
       const { data } = action.payload;
-      const storage = new PersistData('al-mentoria-data');
       storage.set('token', data.token);
       return {
         ...state,
         ...data,
         isLoggedIn: true,
-        loading: false,
+        status: userStatus.authenticated,
       };
     },
     [signupAsync.pending]: (state) => {
@@ -69,7 +84,7 @@ const userSlice = createSlice({
       state.loading = false;
     },
     [authenticateAsync.pending]: (state) => {
-      state.loading = true;
+      state.status = userStatus.authenticating;
     },
     [authenticateAsync.fulfilled]: (state, action) => {
       const { data } = action.payload;
@@ -77,11 +92,11 @@ const userSlice = createSlice({
         ...state,
         ...data,
         isLoggedIn: true,
-        loading: false,
+        status: userStatus.authenticated,
       };
     },
     [authenticateAsync.rejected]: (state) => {
-      state.loading = false;
+      state.status = userStatus.rejected;
     },
   },
 });
