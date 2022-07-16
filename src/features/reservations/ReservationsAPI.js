@@ -1,13 +1,13 @@
 import CONFIG from '../../config.json';
 
-const fetchReservations = async () => {
+export const fetchReservations = async (token) => {
   const response = await fetch(
     `${CONFIG.BASE_URL}/reservations`,
     {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${CONFIG.API_KEY}`,
+        Authorization: `Bearer ${token}`,
       },
     },
   );
@@ -15,4 +15,25 @@ const fetchReservations = async () => {
   return data;
 };
 
-export default fetchReservations;
+export const deleteReservation = async (token, reservationID) => {
+  const response = await fetch(
+    `${CONFIG.BASE_URL}/reservations/${reservationID}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+  console.log(response.status);
+  if (response.status === 204) {
+    return {
+      status: 'success',
+      id: reservationID,
+    };
+  }
+  return {
+    status: 'error',
+  };
+};
