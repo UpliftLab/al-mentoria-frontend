@@ -7,7 +7,7 @@ const initialState = {
     data: [],
     old: [],
   },
-  status: 'idle',
+  reservationStatus: 'idle',
   isLoggedIn: null,
 };
 
@@ -35,38 +35,38 @@ export const reservationsSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchReservationsAsync.pending]: (state) => {
-      state.status = 'loading';
+      state.reservationStatus = 'loading';
     },
     [fetchReservationsAsync.fulfilled]: (state, action) => {
-      state.status = 'success';
-      const oldData = action.payload.filter((reservation) => {
+      const oldData = action.payload?.filter((reservation) => {
         const now = new Date();
         const reservationDate = new Date(reservation.date);
         return reservationDate < now;
       });
       state.reservations.old = oldData;
-      const newData = action.payload.filter((reservation) => {
+      const newData = action.payload?.filter((reservation) => {
         const now = new Date();
         const reservationDate = new Date(reservation.date);
         return reservationDate > now;
       });
       state.reservations.data = newData;
+      state.reservationStatus = 'success';
     },
     [fetchReservationsAsync.rejected]: (state) => {
-      state.status = 'error';
+      state.reservationStatus = 'error';
     },
     [deleteReservationAsync.pending]: (state) => {
-      state.status = 'loading';
+      state.reservationStatus = 'loading';
     },
     [deleteReservationAsync.fulfilled]: (state, action) => {
-      state.status = 'success';
+      state.reservationStatus = 'success';
       const data = current(state).reservations.data.filter(
         (reservation) => reservation.id !== action.payload.id,
       );
       state.reservations.data = data;
     },
     [deleteReservationAsync.rejected]: (state) => {
-      state.status = 'error';
+      state.reservationStatus = 'error';
     },
     [userSlice.actions.signOut]: () => initialState,
   },

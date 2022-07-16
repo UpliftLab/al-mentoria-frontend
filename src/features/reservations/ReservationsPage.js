@@ -3,20 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { fetchReservationsAsync, deleteReservationAsync } from './reservationsSlice';
+import { userStatus } from '../user/userSlice';
 
 const ReservationsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { reservations } = useSelector((state) => state.reservations);
-  const { token, isLoggedIn, loading } = useSelector((state) => state.user);
+  const { reservations, reservationStatus } = useSelector((state) => state.reservations);
+  const { token, status } = useSelector((state) => state.user);
   useEffect(() => {
-    if (isLoggedIn) {
+    if (
+      status === userStatus.unauthenticated
+      || status === userStatus.rejected
+      || status === userStatus.failed
+    ) {
+      toast.error('You need to login first!');
+      navigate('/signin');
+    } else if (status === userStatus.authenticated) {
       dispatch(fetchReservationsAsync({ token }));
-    } else if (!isLoggedIn) {
-      toast.error('You must be logged in to view your reservations');
-      navigate('/mentors');
     }
-  }, [isLoggedIn, loading]);
+  }, [status]);
 
   const deleteReservation = (id) => {
     dispatch(deleteReservationAsync({ token, id })).then(() => {
@@ -26,8 +31,27 @@ const ReservationsPage = () => {
     });
   };
 
+  if (status === userStatus.authenticating || reservationStatus === 'loading') {
+    return (
+      <section className="relative flex flex-col w-screen h-screen md:py-12">
+        <h2 className="ml-10 text-2xl font-bold">Active reservations</h2>
+        <div className="flex justify-center items-center p-10">
+          <div className="spinner-border text-primary" role="status">
+            <span className="h-6 w-6 block rounded-full border-4 border-t-lime-500 animate-spin" />
+          </div>
+        </div>
+        <h2 className="ml-10 text-2xl font-bold">Old reservations</h2>
+        <div className="flex justify-center items-center p-10">
+          <div className="spinner-border text-primary" role="status">
+            <span className="h-6 w-6 block rounded-full border-4 border-t-lime-500 animate-spin" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <div className="relative flex flex-col w-screen h-screen md:py-12">
+    <section className="relative flex flex-col w-screen h-screen md:py-12">
       <h2 className="ml-10 text-2xl font-bold">Active reservations</h2>
       {reservations?.data?.length !== 0 && (
         <ul className="grid 2xl:grid-cols-4 xl:grid-cols-3 justify-center md:grid-cols-2 gap-10 p-10">
@@ -72,14 +96,14 @@ const ReservationsPage = () => {
             </div>
           </li>
         ))}
-        {reservations?.old?.length === 0 && (
+        {status === userStatus.authenticated && reservationStatus === 'success' && reservations?.old?.length === 0 && (
           <li className="text-center text-gray-700 text-base">
             No old reservations found
           </li>
         )}
       </ul>
 
-    </div>
+    </section>
   );
 };
 
