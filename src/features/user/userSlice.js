@@ -2,6 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import PersistData from '../../app/persistData';
 import { authenticate, signinRequest, signup } from './userApi';
 
+/**
+ * initialized: the initial status of user, it should be immediately changed.
+ * unauthenticated: we are certain that the user doesn't have access to any credentials.
+ * authenticating: in the process of authenticating to the API.
+ * authenticated: we are certain that the user has a valid credential.
+ * rejected: we are certain that the user credential is invalid.
+ * failed: credential verification failed (uncertain status).
+ */
 export const userStatus = {
   initialized: 'INITIALIZED',
   unauthenticated: 'UNAUTHENTICATED',
