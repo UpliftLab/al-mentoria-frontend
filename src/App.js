@@ -7,7 +7,7 @@ import {
 import { toast, ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './features/header/Header';
 import Mentors from './routes/Mentors';
 import Reservations from './routes/Reservations';
@@ -17,23 +17,24 @@ import MentorDetails from './routes/MentorDetails';
 
 import SigninPage from './routes/SigninPage';
 import SignunPage from './routes/SignupPage';
-import PersistData from './app/persistData';
 import userSlice, { authenticateAsync } from './features/user/userSlice';
 import TopicsPage from './routes/TopicsPage';
 
 const App = () => {
   const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const storage = new PersistData();
-    if (storage.get('token')) {
-      dispatch(authenticateAsync(storage.get('token')))
+    if (token.length > 0) {
+      dispatch(authenticateAsync(token))
         .unwrap()
         .then(() => { })
         .catch(() => {
           toast.error('You need to login again!');
           dispatch(userSlice.actions.signOut());
         });
+    } else {
+      dispatch(userSlice.actions.setUnauthenticated());
     }
   }, []);
 
