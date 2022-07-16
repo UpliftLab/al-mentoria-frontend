@@ -26,7 +26,6 @@ export const deleteReservation = async (token, reservationID) => {
       },
     },
   );
-  console.log(response.status);
   if (response.status === 204) {
     return {
       status: 'success',
