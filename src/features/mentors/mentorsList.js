@@ -9,6 +9,13 @@ import DirectionalButton from '../button/DirectionalButton';
 import Loading from '../loading/loading';
 
 const MentorsList = () => {
+  /**
+   * Component status:
+   * - INITIALIZED: Must change to one of the followings as soon as possible
+   * - FETCHING   : Temporary status while fetchig data
+   * - FETCHED    : Data is recieved
+   * - FAILED     : Data fetching failed
+   */
   const { status, mentors } = useSelector((state) => state.mentors);
   const dispatch = useDispatch();
 
