@@ -12,7 +12,6 @@ import Header from './features/header/Header';
 import Mentors from './routes/Mentors';
 import Reservations from './routes/Reservations';
 import AddMentor from './routes/AddMentor';
-import AddTopic from './routes/AddTopic';
 import MentorDetails from './routes/MentorDetails';
 
 import SigninPage from './routes/SigninPage';
@@ -53,7 +52,6 @@ const App = () => {
             <Route path="/mentors/new" element={<AddMentor />} />
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/topics" element={<TopicsPage />} />
-            <Route path="/topics/new" element={<AddTopic />} />
             <Route path="*" element={<Mentors />} />
           </Routes>
         </main>
