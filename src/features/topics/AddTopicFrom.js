@@ -32,7 +32,7 @@ const AddTopicForm = () => {
   };
 
   return (
-    <form className="w-fit self-center  md:self-end" onSubmit={handleSubmit}>
+    <form className="w-fit self-center" onSubmit={handleSubmit}>
       <div className="flex flex-col items-center md:flex-row gap-2 py-2 mx-auto">
         <input onChange={handleInput} className="px-4 py-2 rounded font-semibold w-full md:w-48 bg-lime-500 text-white border-2 border-white placeholder:text-white focus:outline-none appearance-none" type="text" placeholder="label" aria-label="label" id="label" />
         <input onChange={handleInput} className="px-4 py-2 rounded font-semibold w-full md:w-48 bg-lime-500 text-white border-2 border-white placeholder:text-white focus:outline-none appearance-none" type="url" placeholder="icon" aria-label="icon" id="icon" />
