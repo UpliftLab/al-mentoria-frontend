@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Topic = ({ label, icon }) => (
 
-  <div className="flex items-center justify-center odd:bg-gray-200 py-2 px-4m gap-2">
+  <div className="flex items-center justify-start bg-gray-100 rounded shadow-sm hover:bg-opacity-90 hover:backdrop-blur-xl py-2 px-4 w-fit gap-2">
     <div className="w-12">
       <img src={icon} alt={`${label}'icon`} />
     </div>
