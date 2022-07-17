@@ -22,3 +22,27 @@ export default async function getTopicsFromApi(token) {
     throw new Error('Can not get JSON from the response');
   }
 }
+
+export async function createTopicInApi(data) {
+  const endpoint = '/topics';
+  const { token, body } = data;
+  const response = await fetch(CONFIG.BASE_URL + endpoint, {
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response || response.status !== 201) {
+    throw new Error('You are not authorized to make this request');
+  }
+
+  try {
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Can not get JSON from the response');
+  }
+}
