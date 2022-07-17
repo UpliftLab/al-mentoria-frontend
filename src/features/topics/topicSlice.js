@@ -41,7 +41,6 @@ const topicSlice = createSlice({
     },
     [addTopicAsync.fulfilled]: (state, action) => {
       const { data } = action.payload;
-      console.log(data);
       state.topics.push(data);
     },
   },
