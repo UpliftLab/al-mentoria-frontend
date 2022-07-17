@@ -1,8 +1,9 @@
+import AddTopicForm from '../features/topics/AddTopicFrom';
 import Topics from '../features/topics/Topics';
 
 const TopicsPage = () => (
-  <section className="flex flex-col m-12 justify-center items-center w-full h-full">
-    <h1>Topics Page</h1>
+  <section className="flex flex-col p-12 gap-6 justify-start w-full h-full bg-lime-500">
+    <AddTopicForm />
     <Topics />
   </section>
 );

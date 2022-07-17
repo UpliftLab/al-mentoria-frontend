@@ -41,7 +41,7 @@ const Topics = () => {
   }, [status]);
 
   return (
-    <div className="flex flex-col p-12 justify-start items-center">
+    <div className="flex flex-wrap py-6 justify-start gap-2 w-fit">
       {
         topics.map((topic) => (
           <Topic key={topic.id} label={topic.label} icon={topic.icon} />
