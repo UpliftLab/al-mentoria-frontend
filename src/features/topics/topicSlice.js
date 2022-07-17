@@ -52,8 +52,11 @@ const topicSlice = createSlice({
       state.topics.push(data);
     },
     [deleteTopicAsync.fulfilled]: (state, action) => {
-      const { id } = action.payload;
-      state.topics.filter((topic) => topic.id !== id);
+      const newState = {
+        ...state,
+        topics: state.topics.filter((topic) => topic.id !== action.payload),
+      };
+      return newState;
     },
   },
 });
