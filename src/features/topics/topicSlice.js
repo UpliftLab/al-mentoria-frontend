@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import userSlice from '../user/userSlice';
-import getTopicsFromApi, { createTopicInApi } from './topicApi';
+import getTopicsFromApi, { createTopicInApi, deleteTopicInApi } from './topicApi';
 
 const initialState = {
   loading: false,
@@ -19,6 +19,14 @@ export const addTopicAsync = createAsyncThunk(
   'topics/addTopic',
   async (data) => {
     const response = await createTopicInApi(data);
+    return response;
+  },
+);
+
+export const deleteTopicAsync = createAsyncThunk(
+  'topics/deleteTopic',
+  async (data) => {
+    const response = await deleteTopicInApi(data);
     return response;
   },
 );
@@ -42,6 +50,10 @@ const topicSlice = createSlice({
     [addTopicAsync.fulfilled]: (state, action) => {
       const { data } = action.payload;
       state.topics.push(data);
+    },
+    [deleteTopicAsync.fulfilled]: (state, action) => {
+      const { id } = action.payload;
+      state.topics.filter((topic) => topic.id !== id);
     },
   },
 });
