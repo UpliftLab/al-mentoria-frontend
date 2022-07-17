@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import userSlice from '../user/userSlice';
-import getTopicsFromApi from './topicApi';
+import getTopicsFromApi, { createTopicInApi } from './topicApi';
 
 const initialState = {
   loading: false,
@@ -12,6 +12,14 @@ export const getTopicsAsync = createAsyncThunk(
   async (token) => {
     const data = await getTopicsFromApi(token);
     return data;
+  },
+);
+
+export const addTopicAsync = createAsyncThunk(
+  'topics/addTopic',
+  async (data) => {
+    const response = await createTopicInApi(data);
+    return response;
   },
 );
 
