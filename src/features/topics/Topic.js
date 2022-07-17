@@ -6,19 +6,17 @@ const Topic = ({ label, icon }) => {
   const handleError = (e) => {
     const image = e.currentTarget;
     image.src = Image;
-    image.className += 'w-8';
+    image.className += ' h-8';
     toast.error('icon not found');
   };
 
   return (
-
-    <div className="flex items-center justify-start bg-gray-100 rounded shadow-sm hover:bg-opacity-90 hover:backdrop-blur-xl py-2 px-4 w-fit gap-2">
-      <div className="w-12">
-        <img src={icon} alt={`${label}'icon`} onError={handleError} />
+    <div className="flex cursor-default items-center justify-start bg-gray-100 rounded shadow-sm hover:bg-opacity-90 hover:backdrop-blur-xl py-2 px-4 w-fit gap-2">
+      <div className="w-12 flex justify-center">
+        <img src={icon} className="max-h-[32px]" alt={`${label}'icon`} onError={handleError} />
       </div>
       <h3 className="">{label}</h3>
     </div>
-
   );
 };
 

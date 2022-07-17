@@ -28,6 +28,7 @@ const topicSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [userSlice.actions.signOut]: () => initialState,
     [getTopicsAsync.pending]: (state) => {
       state.loading = true;
     },
@@ -38,7 +39,11 @@ const topicSlice = createSlice({
     [getTopicsAsync.rejected]: (state) => {
       state.loading = false;
     },
-    [userSlice.actions.signOut]: () => initialState,
+    [addTopicAsync.fulfilled]: (state, action) => {
+      const { data } = action.payload;
+      console.log(data);
+      state.topics.push(data);
+    },
   },
 });
 
