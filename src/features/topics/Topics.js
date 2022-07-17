@@ -31,6 +31,8 @@ const Topics = () => {
             navigate('/');
             toast.error(error.message);
           });
+      } else if (status === userStatus.authenticating) {
+        toast.info('authenticating');
       } else {
         navigate('/');
         toast.error('You are not authorized');
@@ -39,7 +41,7 @@ const Topics = () => {
   }, [status]);
 
   return (
-    <div className="flex flex-col m-12 justify-center items-center">
+    <div className="flex flex-col p-12 justify-start items-center">
       {
         topics.map((topic) => (
           <Topic key={topic.id} label={topic.label} icon={topic.icon} />
