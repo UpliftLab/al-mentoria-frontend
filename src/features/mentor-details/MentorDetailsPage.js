@@ -6,16 +6,18 @@ import { BsStarFill, BsStar } from 'react-icons/bs';
 import Rating from 'react-rating';
 import { toast } from 'react-toastify';
 import {
-  fetchMentorAsync,
+  fetchMentorAsync, mentorDetailsSlice,
 } from './mentorDetailsSlice';
 import Button from '../button/Button';
 import DirectionalButton from '../button/DirectionalButton';
 
 const MentorDetailsPage = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { mentor } = useSelector((state) => state.mentorDetails);
   const { id } = useParams();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(fetchMentorAsync(id))
       .unwrap()
@@ -28,6 +30,9 @@ const MentorDetailsPage = () => {
           navigate('/mentors');
         }
       });
+    return () => {
+      dispatch(mentorDetailsSlice.actions.cleanUp());
+    };
   }, []);
 
   const goBack = () => {
