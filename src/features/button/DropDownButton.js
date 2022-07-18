@@ -3,6 +3,7 @@ import CaretDown from '../../images/caret-down.svg';
 
 const DropDownButton = ({
   options,
+  defaultOption,
   onChange,
 }) => (
   <select
@@ -15,6 +16,7 @@ const DropDownButton = ({
       backgroundRepeat: 'no-repeat',
     }}
   >
+    <option value="" disabled selected>{defaultOption}</option>
     {options.map((value) => <option key={value} value={value}>{value}</option>)}
   </select>
 );
@@ -22,6 +24,7 @@ const DropDownButton = ({
 DropDownButton.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func.isRequired,
+  defaultOption: PropTypes.string.isRequired,
 };
 
 export default DropDownButton;
