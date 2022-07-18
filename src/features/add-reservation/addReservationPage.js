@@ -8,16 +8,19 @@ import { bookReservationAsync, setMentor } from './addReservationSlice';
 import DateSelectionInput from './DateSelectionInput';
 import userSlice from '../user/userSlice';
 import statusHandling from '../user/statusHandling';
+import { fetchMentorsAsync } from '../mentors/mentorsSlice';
+import Loading from '../loading/loading';
 
 const AddReservationPage = () => {
-  const { state } = useLocation();
+  const { state: params } = useLocation();
   const dispatch = useDispatch();
   const { mentor } = useSelector((state) => state.addReservation);
   const navigate = useNavigate();
-  const { status, token } = useSelector((state) => state.user);
+  const { status: userStatus, token } = useSelector((state) => state.user);
+  const { status: mentorsStatus, mentors } = useSelector((state) => state.mentors);
 
   useEffect(() => {
-    const [stay, error] = statusHandling(status);
+    const [stay, error] = statusHandling(userStatus);
     if (!stay) {
       if (error) {
         toast.error(error);
@@ -25,10 +28,16 @@ const AddReservationPage = () => {
       dispatch(userSlice.actions.signOut());
       navigate('/signin');
     }
-  }, [status]);
+  }, [userStatus]);
 
-  if (state) {
-    dispatch(setMentor(state.mentor));
+  useEffect(() => {
+    if (['INITIALIZED', 'FAILED'].includes(mentorsStatus)) {
+      dispatch(fetchMentorsAsync());
+    }
+  }, []);
+
+  if (params) {
+    dispatch(setMentor(params.mentor));
   }
 
   const handleSubmit = async (e) => {
@@ -58,7 +67,7 @@ const AddReservationPage = () => {
       <div className="bg-lime-500 opacity-90 absolute inset-0" />
       <div className="flex flex-col justify-center items-center absolute inset-0 mx-10 gap-6">
         <p className="text-2xl tracking-widest font-bold text-white border-white border-b-[1px] pb-6 px-4 text-center">
-          {mentor ? `BOOK A RESERVATION WITH ${mentor.name.toUpperCase()}` : 'SELECT A MENTOR FROM LIST'}
+          {mentor ? `BOOK A RESERVATION WITH ${mentor.name.toUpperCase()}` : 'CHOOSE A MENTOR FROM LIST'}
         </p>
         { mentor
           ? (
@@ -80,11 +89,28 @@ const AddReservationPage = () => {
                   required
                 />
                 <DateSelectionInput id="reservation-date" required />
-                <Button isSubmit onClick={() => {}} child="Book Now" isWhite />
+                <Button isSubmit child="Book Now" isWhite />
               </form>
             </div>
           ) : (
-            <div />
+            <>
+              {['INITIALIZED', 'FETCHING'].includes(mentorsStatus) && <Loading />}
+              {['FAILED'].includes(mentorsStatus) && <>Failed to fetch mentors!</>}
+              {(mentorsStatus === 'FETCHED' && mentors.length === 0) && <>Currently no mentor is available!</>}
+              {(mentorsStatus === 'FETCHED' && mentors.length) ? (
+                <>
+                  <DropDownButton
+                    options={mentors.map((e) => ({
+                      id: e.id,
+                      text: e.name,
+                    }))}
+                    defaultOption="Select a Mentor"
+                    elementID="mentor-id"
+                    required
+                  />
+                </>
+              ) : (<></>)}
+            </>
           )}
       </div>
     </div>
