@@ -4,11 +4,13 @@ import bookReservation from './bookReservationAPI';
 
 export const bookReservationAsync = createAsyncThunk(
   'bookReservation',
-  async ({ mentorTopicID, reservationDate }) => {
+  async ({ mentorTopicID, reservationDate, token }) => {
     const result = await bookReservation({
       mentorTopicID,
       date: reservationDate,
+      token,
     });
+    console.log(result);
     return result;
   },
 );

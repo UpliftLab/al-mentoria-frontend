@@ -1,16 +1,27 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
 import { bookReservationAsync, setMentor } from './addReservationSlice';
 import DateSelectionInput from './DateSelectionInput';
+import userSlice, { userStatus } from '../user/userSlice';
 
 const AddReservationPage = () => {
   const { state } = useLocation();
   const dispatch = useDispatch();
   const { mentor } = useSelector((state) => state.addReservation);
   const navigate = useNavigate();
+  const { status, token } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (status !== userStatus.authenticated) {
+      toast.error('You need to login!');
+      dispatch(userSlice.actions.signOut());
+      navigate('/signin');
+    }
+  }, [status]);
 
   if (state) {
     dispatch(setMentor(state.mentor));
@@ -21,6 +32,7 @@ const AddReservationPage = () => {
     await dispatch(bookReservationAsync({
       reservationDate: e.target.elements['reservation-date'].value,
       mentorTopicID: e.target.elements['mentor-topic-id'].value,
+      token,
     })).unwrap().then((response) => {
       if (response) {
         toast.success('Reservation Created Successfully');

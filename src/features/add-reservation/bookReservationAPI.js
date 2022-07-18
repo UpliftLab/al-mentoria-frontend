@@ -1,26 +1,21 @@
 import CONFIG from '../../config.json';
 
-const bookReservation = async ({ mentorTopicID, date }) => {
+const bookReservation = async ({ mentorTopicID, date, token }) => {
   const endpoint = '/reservations';
   const data = {
     mentor_topic_id: mentorTopicID,
     date,
   };
 
-  await fetch(CONFIG.BASE_URL + endpoint, {
+  const result = await fetch(CONFIG.BASE_URL + endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
-  }).then(async (response) => {
-    try {
-      return await response.json();
-    } catch (e) {
-      return null;
-    }
-  });
-  return null;
+  }).then((response) => response.status === 201);
+  return result;
 };
 
 export default bookReservation;
