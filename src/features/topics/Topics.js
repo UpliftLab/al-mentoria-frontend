@@ -53,7 +53,7 @@ const Topics = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center gap-2 w-fit">
+    <div className="flex flex-wrap justify-center gap-2">
       <div className={`fixed inset-0 h-full w-full bg-black/80 grid place-content-center backdrop-blur-sm ${(open.open ? 'z-10 block' : '-z-10 hidden')}`}>
         <div className="bg-white  rounded-md text-center shadow-lg p-4">
           <h1 className="text-xl mb-4 font-semibold">Do you really want to delete me?</h1>
@@ -61,16 +61,16 @@ const Topics = () => {
           <button type="button" onClick={() => handleDeleteTopic(open.id)} className="bg-red-500 px-7 py-2 ml-2 rounded-md text-white font-semibold">DELETE</button>
         </div>
       </div>
-      {
-        topics.map((topic) => (
-          <Topic
-            key={topic.id}
-            label={topic.label}
-            icon={topic.icon}
-            onClick={() => setOpen({ open: true, id: topic.id })}
-          />
-        ))
-      }
+      { (topics.length) ? topics.map((topic) => (
+        <Topic
+          key={topic.id}
+          label={topic.label}
+          icon={topic.icon}
+          onClick={() => setOpen({ open: true, id: topic.id })}
+        />
+      )) : (
+        <div className="text-center text-white">No topics found!</div>
+      )}
 
     </div>
   );
