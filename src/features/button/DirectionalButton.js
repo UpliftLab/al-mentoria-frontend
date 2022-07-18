@@ -24,7 +24,7 @@ const DirectionalButton = ({
 DirectionalButton.propTypes = {
   left: PropTypes.bool,
   disabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   twClasses: PropTypes.string,
 };
 
@@ -32,6 +32,7 @@ DirectionalButton.defaultProps = {
   left: false,
   disabled: false,
   twClasses: '',
+  onClick: () => {},
 };
 
 export default DirectionalButton;
