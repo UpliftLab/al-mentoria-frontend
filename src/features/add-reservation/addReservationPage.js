@@ -1,8 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import TopicsDropDownButton from '../button/TopicsDropDownButton';
+import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
-import { setMentor, setTopic } from './addReservationSlice';
+import { setMentor } from './addReservationSlice';
 
 const AddReservationPage = () => {
   const { state } = useLocation();
@@ -28,8 +28,15 @@ const AddReservationPage = () => {
                 {mentor.bio}
               </p>
               <div className="flex mt-4 gap-6">
-                <TopicsDropDownButton options={mentor.mentor_topics} onChange={(e) => { dispatch(setTopic(e.target.value)); }} defaultOption="Select a Topic" />
-                <Button onClick={() => {}} child="Book Now" isWhite />
+                <DropDownButton
+                  options={mentor.mentor_topics.map((e) => ({
+                    id: e.id,
+                    text: e.topic.label,
+                  }))}
+                  defaultOption="Select a Topic"
+                  elementID="topic"
+                />
+                <Button isSubmit onClick={() => {}} child="Book Now" isWhite />
               </div>
             </div>
           ) : (
