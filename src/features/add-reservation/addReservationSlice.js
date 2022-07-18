@@ -33,9 +33,6 @@ export const addReservationSlice = createSlice({
     setMentor: (state, action) => {
       state.mentor = action.payload;
     },
-    setTopic: (state, action) => {
-      state.selectedTopic = action.payload;
-    },
   },
   extraReducers: {
     [fetchMentorAsync.pending]: (state) => {
@@ -61,6 +58,6 @@ export const addReservationSlice = createSlice({
   },
 });
 
-export const { setMentor, setTopic } = addReservationSlice.actions;
+export const { setMentor } = addReservationSlice.actions;
 
 export default addReservationSlice.reducer;
