@@ -51,7 +51,7 @@ const AddReservationPage = () => {
       })).unwrap().then((response) => {
         if (response) {
           toast.success('Reservation Created Successfully');
-          navigate('/');
+          navigate('/reservations');
         } else {
           toast.error('Error Creating Reservation, Try again later.');
         }
