@@ -34,11 +34,10 @@ const AddReservationPage = () => {
     if (['INITIALIZED', 'FAILED'].includes(mentorsStatus)) {
       dispatch(fetchMentorsAsync());
     }
+    if (params) {
+      dispatch(setMentor(params.mentor));
+    }
   }, []);
-
-  if (params) {
-    dispatch(setMentor(params.mentor));
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
