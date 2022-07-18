@@ -35,7 +35,7 @@ const MentorDetailsPage = () => {
   };
 
   const addReservation = () => {
-    navigate('/reservations/new');
+    navigate('/reservations/new', { state: { mentor } });
   };
 
   return (
