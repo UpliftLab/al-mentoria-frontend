@@ -1,6 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchMentorAsync } from '../mentor-details/mentorDetailsSlice';
+import bookReservation from './bookReservationAPI';
+
+export const bookReservationAsync = createAsyncThunk(
+  'bookReservation',
+  async ({ mentorTopicID, reservationDate }) => {
+    const result = await bookReservation({
+      mentorTopicID,
+      date: reservationDate,
+    });
+    return result;
+  },
+);
 
 export const status = {
   idle: 'IDLE',
@@ -37,7 +48,15 @@ export const addReservationSlice = createSlice({
     },
     [fetchMentorAsync.rejected]: (state) => {
       state.status = status.error;
-      toast.error(state.status);
+    },
+    [bookReservationAsync.pending]: (state) => {
+      state.status = status.loading;
+    },
+    [bookReservationAsync.fulfilled]: (state) => {
+      state.status = status.success;
+    },
+    [bookReservationAsync.rejected]: (state) => {
+      state.status = status.error;
     },
   },
 });

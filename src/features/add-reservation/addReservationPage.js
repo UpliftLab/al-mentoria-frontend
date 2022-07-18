@@ -1,18 +1,35 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
-import { setMentor } from './addReservationSlice';
+import { bookReservationAsync, setMentor } from './addReservationSlice';
 import DateSelectionInput from './DateSelectionInput';
 
 const AddReservationPage = () => {
   const { state } = useLocation();
   const dispatch = useDispatch();
   const { mentor } = useSelector((state) => state.addReservation);
+  const navigate = useNavigate();
 
   if (state) {
     dispatch(setMentor(state.mentor));
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await dispatch(bookReservationAsync({
+      reservationDate: e.target.elements['reservation-date'].value,
+      mentorTopicID: e.target.elements['mentor-topic-id'].value,
+    })).unwrap().then((response) => {
+      if (response) {
+        toast.success('Reservation Created Successfully');
+        navigate('/');
+      } else {
+        toast.error('Error Creating Reservation');
+      }
+    });
+  };
 
   return (
     <div id="add-mentor-page">
@@ -28,18 +45,21 @@ const AddReservationPage = () => {
               <p className="text-white text-center max-w-3xl">
                 {mentor.bio}
               </p>
-              <div className="flex flex-wrap justify-center mt-4 gap-6">
+              <form
+                onSubmit={(e) => handleSubmit(e)}
+                className="flex flex-wrap justify-center mt-4 gap-6"
+              >
                 <DropDownButton
                   options={mentor.mentor_topics.map((e) => ({
                     id: e.id,
                     text: e.topic.label,
                   }))}
                   defaultOption="Select a Topic"
-                  elementID="reservation-topic-id"
+                  elementID="mentor-topic-id"
                 />
                 <DateSelectionInput id="reservation-date" />
                 <Button isSubmit onClick={() => {}} child="Book Now" isWhite />
-              </div>
+              </form>
             </div>
           ) : (
             <div />
