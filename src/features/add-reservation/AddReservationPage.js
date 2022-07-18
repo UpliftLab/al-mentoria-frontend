@@ -34,16 +34,17 @@ const AddReservationPage = () => {
     if (['INITIALIZED', 'FAILED'].includes(mentorsStatus)) {
       dispatch(fetchMentorsAsync());
     }
+    if (params) {
+      dispatch(setMentor(params.mentor));
+    }
   }, []);
-
-  if (params) {
-    dispatch(setMentor(params.mentor));
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (new Date(e.target.elements['reservation-date'].value) > new Date()) {
+    if (new Date(e.target.elements['reservation-date'].value).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
+      toast.error('You cannot reserve a date in past');
+    } else {
       await dispatch(bookReservationAsync({
         reservationDate: e.target.elements['reservation-date'].value,
         mentorTopicID: e.target.elements['mentor-topic-id'].value,
@@ -56,8 +57,6 @@ const AddReservationPage = () => {
           toast.error('Error Creating Reservation, Try again later.');
         }
       });
-    } else {
-      toast.error('You cannot reserve a date in past');
     }
   };
 
