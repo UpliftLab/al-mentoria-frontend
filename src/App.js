@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './features/header/Header';
-import Mentors from './routes/Mentors';
+import MentorsPage from './routes/MentorsPage';
 import Reservations from './routes/Reservations';
 import Topics from './routes/Topics';
 import AddMentor from './routes/AddMentor';
@@ -47,14 +47,14 @@ const App = () => {
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignunPage />} />
             <Route path="/mentors" element={<Outlet />}>
-              <Route index element={<Mentors />} />
+              <Route index element={<MentorsPage />} />
               <Route path=":id" element={<MentorDetails />} />
             </Route>
             <Route path="/mentors/new" element={<AddMentor />} />
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/topics/new" element={<AddTopic />} />
-            <Route path="*" element={<Mentors />} />
+            <Route path="*" element={<MentorsPage />} />
           </Routes>
         </main>
       </BrowserRouter>
