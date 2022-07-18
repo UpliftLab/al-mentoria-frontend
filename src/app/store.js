@@ -9,7 +9,7 @@ import userSlice from '../features/user/userSlice';
 const store = configureStore({
   reducer: {
     counter: counterReducer,
-    reservations: reservationsSlice,
+    reservations: reservationsSlice.reducer,
     mentorDetails: mentorDetailsReducer,
     user: userSlice.reducer,
     topic: topicSlice.reducer,

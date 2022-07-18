@@ -30,7 +30,7 @@ export const deleteReservationAsync = createAsyncThunk(
   },
 );
 
-export const reservationsSlice = createSlice({
+const reservationsSlice = createSlice({
   name: 'reservations',
   initialState,
   extraReducers: {
@@ -72,4 +72,4 @@ export const reservationsSlice = createSlice({
   },
 });
 
-export default reservationsSlice.reducer;
+export default reservationsSlice;

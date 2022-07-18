@@ -33,7 +33,7 @@ const ReservationsPage = () => {
 
   if (status === userStatus.authenticating || reservationStatus === 'loading') {
     return (
-      <section className="relative flex flex-col w-screen h-screen md:py-12">
+      <section className="relative flex flex-col w-full h-screen md:py-12">
         <h2 className="ml-10 text-2xl font-bold">Active reservations</h2>
         <div className="flex justify-center items-center p-10">
           <div className="spinner-border text-primary" role="status">
@@ -51,7 +51,7 @@ const ReservationsPage = () => {
   }
 
   return (
-    <section className="relative flex flex-col w-screen h-screen md:py-12">
+    <section className="relative flex flex-col w-full h-screen md:py-12">
       <h2 className="ml-10 text-2xl font-bold">Active reservations</h2>
       {reservations?.data?.length !== 0 && (
         <ul className="grid 2xl:grid-cols-4 xl:grid-cols-3 justify-center md:grid-cols-2 gap-10 p-10">
