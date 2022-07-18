@@ -29,18 +29,23 @@ const AddReservationPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(bookReservationAsync({
-      reservationDate: e.target.elements['reservation-date'].value,
-      mentorTopicID: e.target.elements['mentor-topic-id'].value,
-      token,
-    })).unwrap().then((response) => {
-      if (response) {
-        toast.success('Reservation Created Successfully');
-        navigate('/');
-      } else {
-        toast.error('Error Creating Reservation');
-      }
-    });
+
+    if (new Date(e.target.elements['reservation-date'].value) > new Date()) {
+      await dispatch(bookReservationAsync({
+        reservationDate: e.target.elements['reservation-date'].value,
+        mentorTopicID: e.target.elements['mentor-topic-id'].value,
+        token,
+      })).unwrap().then((response) => {
+        if (response) {
+          toast.success('Reservation Created Successfully');
+          navigate('/');
+        } else {
+          toast.error('Error Creating Reservation, Try again later.');
+        }
+      });
+    } else {
+      toast.error('You cannot reserve a date in past');
+    }
   };
 
   return (

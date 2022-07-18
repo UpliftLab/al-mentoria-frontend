@@ -10,7 +10,6 @@ export const bookReservationAsync = createAsyncThunk(
       date: reservationDate,
       token,
     });
-    console.log(result);
     return result;
   },
 );
