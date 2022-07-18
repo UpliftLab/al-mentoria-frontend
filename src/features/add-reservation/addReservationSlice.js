@@ -38,4 +38,6 @@ export const addReservationSlice = createSlice({
   },
 });
 
+export const { setMentor } = addReservationSlice.actions;
+
 export default addReservationSlice.reducer;
