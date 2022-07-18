@@ -68,8 +68,9 @@ const AddReservationPage = () => {
                   }))}
                   defaultOption="Select a Topic"
                   elementID="mentor-topic-id"
+                  required
                 />
-                <DateSelectionInput id="reservation-date" />
+                <DateSelectionInput id="reservation-date" required />
                 <Button isSubmit onClick={() => {}} child="Book Now" isWhite />
               </form>
             </div>

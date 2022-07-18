@@ -5,9 +5,11 @@ const DropDownButton = ({
   options,
   elementID,
   defaultOption,
+  required,
 }) => (
   <select
     id={elementID}
+    required={required}
     className="px-6 py-2 rounded-full font-semibold min-w-[200px] bg-lime-500 text-white border-2 border-white focus:outline-none appearance-none"
     style={{
       backgroundImage: `url(${CaretDown})`,
@@ -28,6 +30,11 @@ DropDownButton.propTypes = {
   })).isRequired,
   elementID: PropTypes.string.isRequired,
   defaultOption: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+};
+
+DropDownButton.defaultProps = {
+  required: false,
 };
 
 export default DropDownButton;
