@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Image from '../../images/image-not-found.png';
 
@@ -8,7 +7,6 @@ const Topic = ({ label, icon, onClick }) => {
     const image = e.currentTarget;
     image.src = Image;
     image.className += ' h-8';
-    toast.error('icon not found');
   };
 
   return (

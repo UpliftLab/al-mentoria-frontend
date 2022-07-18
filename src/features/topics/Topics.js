@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Topic from './Topic';
 import { deleteTopicAsync, getTopicsAsync } from './topicSlice';
-import { userStatus } from '../user/userSlice';
+import userSlice, { userStatus } from '../user/userSlice';
 
 const Topics = () => {
   const [open, setOpen] = useState({ open: false, id: null });
@@ -16,7 +16,6 @@ const Topics = () => {
   useEffect(() => {
     if (
       status === userStatus.unauthenticated
-      || status === userStatus.rejected
       || status === userStatus.failed
     ) {
       toast.error('You need to login!');
@@ -25,15 +24,15 @@ const Topics = () => {
       if (role === 'admin') {
         dispatch(getTopicsAsync(token))
           .unwrap()
-          .then(() => {
-            toast.success('successfully fetched topics');
-          })
           .catch((error) => {
             navigate('/');
             toast.error(error.message);
           });
+      } else if (status === userStatus.rejected) {
+        dispatch(userSlice.actions.signOut());
+        navigate('/');
       } else if (status === userStatus.authenticating) {
-        toast.info('authenticating');
+        toast.info('Authenticating');
       } else {
         navigate('/');
         toast.error('You are not authorized');
