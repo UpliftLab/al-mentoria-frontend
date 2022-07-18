@@ -23,7 +23,6 @@ const storage = new PersistData();
 
 const initialState = {
   status: userStatus.initialized,
-  isLoggedIn: false,
   token: storage.get('token'),
   name: '',
   role: '',
@@ -78,18 +77,8 @@ const userSlice = createSlice({
       return {
         ...state,
         ...data,
-        isLoggedIn: true,
         status: userStatus.authenticated,
       };
-    },
-    [signupAsync.pending]: (state) => {
-      state.loading = true;
-    },
-    [signupAsync.fulfilled]: (state) => {
-      state.loading = false;
-    },
-    [signupAsync.rejected]: (state) => {
-      state.loading = false;
     },
     [authenticateAsync.pending]: (state) => {
       state.status = userStatus.authenticating;
@@ -99,7 +88,6 @@ const userSlice = createSlice({
       return {
         ...state,
         ...data,
-        isLoggedIn: true,
         status: userStatus.authenticated,
       };
     },
