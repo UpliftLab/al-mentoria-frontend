@@ -19,13 +19,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import NavbarLink from './NavbarLink';
 import SocialLink from './SocialLink';
-import userSlice from '../user/userSlice';
+import userSlice, { userStatus } from '../user/userSlice';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { name, isLoggedIn, role } = useSelector((state) => state.user);
+  const { name, status: uStatus, role } = useSelector((state) => state.user);
   const headerClasses = 'z-30 fixed lg:relative flex h-full w-52 flex-col border-r-2 border-gray-100 bg-white py-4 transition lg:translate-x-0';
 
   return (
@@ -51,7 +51,7 @@ const Header = () => {
           <li>
             <NavbarLink title="Topics" to="/topics" />
           </li>
-          {isLoggedIn && (
+          {(uStatus === userStatus.authenticated) && (
             <li>
               <NavbarLink title="Reservations" to="/reservations" />
             </li>
@@ -68,7 +68,7 @@ const Header = () => {
           )}
 
           <li className="flex flex-col gap-1 mt-4 font-bold">
-            {isLoggedIn ? (
+            {(uStatus === userStatus.authenticated) ? (
               <>
                 <p
                   className="px-4 text-xs font-normal items-center"
