@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
 import { setMentor } from './addReservationSlice';
+import DateSelectionInput from './DateSelectionInput';
 
 const AddReservationPage = () => {
   const { state } = useLocation();
@@ -27,15 +28,16 @@ const AddReservationPage = () => {
               <p className="text-white text-center max-w-3xl">
                 {mentor.bio}
               </p>
-              <div className="flex mt-4 gap-6">
+              <div className="flex flex-wrap justify-center mt-4 gap-6">
                 <DropDownButton
                   options={mentor.mentor_topics.map((e) => ({
                     id: e.id,
                     text: e.topic.label,
                   }))}
                   defaultOption="Select a Topic"
-                  elementID="topic"
+                  elementID="reservation-topic-id"
                 />
+                <DateSelectionInput id="reservation-date" />
                 <Button isSubmit onClick={() => {}} child="Book Now" isWhite />
               </div>
             </div>
