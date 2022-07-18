@@ -51,7 +51,7 @@ const ReservationsPage = () => {
   }
 
   return (
-    <section className="relative flex flex-col w-full h-screen py-12 ">
+    <section className="relative flex flex-col w-full h-screen py-12">
       <h2 className="ml-10 text-2xl font-bold">Active reservations</h2>
       {reservations?.data?.length !== 0 && (
         <ul className="grid 2xl:grid-cols-4 xl:grid-cols-3 justify-center md:grid-cols-2 gap-10 p-10">
