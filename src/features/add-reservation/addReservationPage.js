@@ -1,15 +1,12 @@
 import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
 
 const AddReservationPage = () => {
   const { state } = useLocation();
-  let mentor = null;
-  if (state) {
-    mentor = state.mentor;
-  }
-
-  console.log(mentor);
+  const dispatch = useDispatch();
+  const { mentor } = useSelector((state) => state.addReservation);
 
   return (
     <div id="add-mentor-page">
