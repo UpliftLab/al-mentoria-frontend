@@ -24,7 +24,7 @@ const App = () => {
   const { token } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (token.length > 0) {
+    if (token) {
       dispatch(authenticateAsync(token))
         .unwrap()
         .then(() => { })
