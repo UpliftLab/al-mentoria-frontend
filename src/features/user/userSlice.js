@@ -2,6 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import PersistData from '../../app/persistData';
 import { authenticate, signinRequest, signup } from './userApi';
 
+/**
+ * initialized: the initial status of user, it should be immediately changed.
+ * unauthenticated: we are certain that the user doesn't have access to any credentials.
+ * authenticating: in the process of authenticating to the API.
+ * authenticated: we are certain that the user has a valid credential.
+ * rejected: we are certain that the user credential is invalid.
+ * failed: credential verification failed (uncertain status).
+ */
 export const userStatus = {
   initialized: 'INITIALIZED',
   unauthenticated: 'UNAUTHENTICATED',
@@ -15,7 +23,6 @@ const storage = new PersistData();
 
 const initialState = {
   status: userStatus.initialized,
-  isLoggedIn: false,
   token: storage.get('token'),
   name: '',
   role: '',
@@ -70,18 +77,8 @@ const userSlice = createSlice({
       return {
         ...state,
         ...data,
-        isLoggedIn: true,
         status: userStatus.authenticated,
       };
-    },
-    [signupAsync.pending]: (state) => {
-      state.loading = true;
-    },
-    [signupAsync.fulfilled]: (state) => {
-      state.loading = false;
-    },
-    [signupAsync.rejected]: (state) => {
-      state.loading = false;
     },
     [authenticateAsync.pending]: (state) => {
       state.status = userStatus.authenticating;
@@ -91,7 +88,6 @@ const userSlice = createSlice({
       return {
         ...state,
         ...data,
-        isLoggedIn: true,
         status: userStatus.authenticated,
       };
     },
