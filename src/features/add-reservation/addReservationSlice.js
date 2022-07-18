@@ -12,6 +12,7 @@ export const status = {
 const initialState = {
   mentor: null,
   status: status.idle,
+  selectedTopic: null,
 };
 
 export const addReservationSlice = createSlice({
@@ -20,6 +21,9 @@ export const addReservationSlice = createSlice({
   reducers: {
     setMentor: (state, action) => {
       state.mentor = action.payload;
+    },
+    setTopic: (state, action) => {
+      state.selectedTopic = action.payload;
     },
   },
   extraReducers: {
@@ -38,6 +42,6 @@ export const addReservationSlice = createSlice({
   },
 });
 
-export const { setMentor } = addReservationSlice.actions;
+export const { setMentor, setTopic } = addReservationSlice.actions;
 
 export default addReservationSlice.reducer;
