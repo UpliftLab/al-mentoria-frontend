@@ -71,7 +71,7 @@ const AddReservationPage = () => {
         </p>
         { mentor
           ? (
-            <div className="flex flex-col justify-center items-center gap-6">
+            <>
               <p className="text-white text-center max-w-3xl">
                 {mentor.bio}
               </p>
@@ -91,25 +91,31 @@ const AddReservationPage = () => {
                 <DateSelectionInput id="reservation-date" required />
                 <Button isSubmit child="Book Now" isWhite />
               </form>
-            </div>
+            </>
           ) : (
             <>
               {['INITIALIZED', 'FETCHING'].includes(mentorsStatus) && <Loading />}
               {['FAILED'].includes(mentorsStatus) && <>Failed to fetch mentors!</>}
               {(mentorsStatus === 'FETCHED' && mentors.length === 0) && <>Currently no mentor is available!</>}
-              {(mentorsStatus === 'FETCHED' && mentors.length) ? (
+              {(mentorsStatus === 'FETCHED' && mentors.length) && (
                 <>
+                  <div className="h-1" />
                   <DropDownButton
                     options={mentors.map((e) => ({
                       id: e.id,
                       text: e.name,
                     }))}
+                    onChange={(e) => {
+                      dispatch(setMentor(
+                        mentors.find((item) => item.id === Number(e.target.value)),
+                      ));
+                    }}
                     defaultOption="Select a Mentor"
                     elementID="mentor-id"
                     required
                   />
                 </>
-              ) : (<></>)}
+              )}
             </>
           )}
       </div>
