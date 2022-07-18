@@ -10,6 +10,7 @@ const DropDownButton = ({
 }) => (
   <select
     id={elementID}
+    defaultValue=""
     required={required}
     onChange={onChange}
     className="px-6 py-2 rounded-full font-semibold min-w-[200px] bg-lime-500 text-white border-2 border-white focus:outline-none appearance-none"
@@ -20,7 +21,7 @@ const DropDownButton = ({
       backgroundRepeat: 'no-repeat',
     }}
   >
-    <option value="" disabled selected>{defaultOption}</option>
+    <option value="" disabled>{defaultOption}</option>
     {options.map((value) => <option key={value.id} value={value.id}>{value.text}</option>)}
   </select>
 );
