@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchMentorAsync } from '../mentor-details/mentorDetailsSlice';
 import bookReservation from './bookReservationAPI';
 
 export const bookReservationAsync = createAsyncThunk(
@@ -36,17 +35,6 @@ export const addReservationSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchMentorAsync.pending]: (state) => {
-      state.status = status.loading;
-    },
-    [fetchMentorAsync.fulfilled]: (state, action) => {
-      state.status = status.success;
-      state.mentor = action.payload;
-      state.status = status.idle;
-    },
-    [fetchMentorAsync.rejected]: (state) => {
-      state.status = status.error;
-    },
     [bookReservationAsync.pending]: (state) => {
       state.status = status.loading;
     },

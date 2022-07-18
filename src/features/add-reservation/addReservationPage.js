@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
-import { bookReservationAsync, setMentor } from './addReservationSlice';
+import { bookReservationAsync, setMentor, status } from './addReservationSlice';
 import DateSelectionInput from './DateSelectionInput';
 import userSlice from '../user/userSlice';
 import statusHandling from '../user/statusHandling';
@@ -14,7 +14,7 @@ import Loading from '../loading/loading';
 const AddReservationPage = () => {
   const { state: params } = useLocation();
   const dispatch = useDispatch();
-  const { mentor } = useSelector((state) => state.addReservation);
+  const { status: reservationStatus, mentor } = useSelector((state) => state.addReservation);
   const navigate = useNavigate();
   const { status: userStatus, token } = useSelector((state) => state.user);
   const { status: mentorsStatus, mentors } = useSelector((state) => state.mentors);
@@ -69,35 +69,37 @@ const AddReservationPage = () => {
         <p className="text-2xl tracking-widest font-bold text-white border-white border-b-[1px] pb-6 px-4 text-center">
           {mentor ? `BOOK A RESERVATION WITH ${mentor.name.toUpperCase()}` : 'CHOOSE A MENTOR FROM LIST'}
         </p>
-        { mentor
-          ? (
-            <>
-              <p className="text-white text-center max-w-3xl">
-                {mentor.bio}
-              </p>
-              <form
-                onSubmit={(e) => handleSubmit(e)}
-                className="flex flex-wrap justify-center mt-4 gap-6"
-              >
-                <DropDownButton
-                  options={mentor.mentor_topics.map((e) => ({
-                    id: e.id,
-                    text: e.topic.label,
-                  }))}
-                  defaultOption="Select a Topic"
-                  elementID="mentor-topic-id"
-                  required
-                />
-                <DateSelectionInput id="reservation-date" required />
-                <Button isSubmit child="Book Now" isWhite />
-              </form>
-            </>
-          ) : (
-            <>
-              {['INITIALIZED', 'FETCHING'].includes(mentorsStatus) && <Loading />}
-              {['FAILED'].includes(mentorsStatus) && <>Failed to fetch mentors!</>}
-              {(mentorsStatus === 'FETCHED' && mentors.length === 0) && <>Currently no mentor is available!</>}
-              {(mentorsStatus === 'FETCHED' && mentors.length) && (
+        {/* eslint-disable-next-line no-nested-ternary */}
+        { reservationStatus === status.loading ? <Loading />
+          : mentor
+            ? (
+              <>
+                <p className="text-white text-center max-w-3xl">
+                  {mentor.bio}
+                </p>
+                <form
+                  onSubmit={(e) => handleSubmit(e)}
+                  className="flex flex-wrap justify-center mt-4 gap-6"
+                >
+                  <DropDownButton
+                    options={mentor.mentor_topics.map((e) => ({
+                      id: e.id,
+                      text: e.topic.label,
+                    }))}
+                    defaultOption="Select a Topic"
+                    elementID="mentor-topic-id"
+                    required
+                  />
+                  <DateSelectionInput id="reservation-date" required />
+                  <Button isSubmit child="Book Now" isWhite />
+                </form>
+              </>
+            ) : (
+              <>
+                {['INITIALIZED', 'FETCHING'].includes(mentorsStatus) && <Loading />}
+                {['FAILED'].includes(mentorsStatus) && <>Failed to fetch mentors!</>}
+                {(mentorsStatus === 'FETCHED' && mentors.length === 0) && <>Currently no mentor is available!</>}
+                {(mentorsStatus === 'FETCHED' && mentors.length) && (
                 <>
                   <div className="h-1" />
                   <DropDownButton
@@ -115,9 +117,9 @@ const AddReservationPage = () => {
                     required
                   />
                 </>
-              )}
-            </>
-          )}
+                )}
+              </>
+            )}
       </div>
     </div>
   );
