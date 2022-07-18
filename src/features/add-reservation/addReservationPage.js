@@ -6,7 +6,8 @@ import DropDownButton from '../button/DropDownButton';
 import Button from '../button/Button';
 import { bookReservationAsync, setMentor } from './addReservationSlice';
 import DateSelectionInput from './DateSelectionInput';
-import userSlice, { userStatus } from '../user/userSlice';
+import userSlice from '../user/userSlice';
+import statusHandling from '../user/statusHandling';
 
 const AddReservationPage = () => {
   const { state } = useLocation();
@@ -16,8 +17,11 @@ const AddReservationPage = () => {
   const { status, token } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (status !== userStatus.authenticated) {
-      toast.error('You need to login!');
+    const [stay, error] = statusHandling(status);
+    if (!stay) {
+      if (error) {
+        toast.error(error);
+      }
       dispatch(userSlice.actions.signOut());
       navigate('/signin');
     }
