@@ -1,7 +1,10 @@
+import PropTypes from 'prop-types';
 import Button from '../features/button/Button';
 import DropDownButton from '../features/button/DropDownButton';
 
-const AddMentor = () => (
+const AddReservation = ({
+  mentor,
+}) => (
   <div id="add-mentor-page">
     <div className="bg-cover absolute inset-0" style={{ backgroundImage: 'url(https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop)' }} />
     <div className="bg-lime-500 opacity-90 absolute inset-0" />
@@ -21,4 +24,13 @@ const AddMentor = () => (
   </div>
 );
 
-export default AddMentor;
+AddReservation.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  mentor: PropTypes.object,
+};
+
+AddReservation.defaultProps = {
+  mentor: null,
+};
+
+export default AddReservation;
