@@ -19,12 +19,12 @@ class PersistData {
 
   load = () => JSON.parse(localStorage.getItem(this.storageName)) || {}
 
-  save = (data = this.storage) => {
-    let newData = this.load();
-    newData = { ...newData, ...data };
+  save = (newData = this.storage) => {
+    let data = this.load();
+    data = { ...data, ...newData };
     localStorage.setItem(
       this.storageName,
-      JSON.stringify(newData),
+      JSON.stringify(data),
     );
   };
 }
