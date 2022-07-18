@@ -36,8 +36,8 @@ const AddTopicForm = () => {
   return (
     <form className="w-fit self-center" onSubmit={handleSubmit}>
       <div className="flex flex-col items-center md:flex-row gap-2 py-2 mx-auto">
-        <input onChange={(e) => handleInput(e)} className="px-4 py-2 rounded font-semibold w-full md:w-48 bg-lime-500 text-white border-2 border-white placeholder:text-white focus:outline-none appearance-none" type="text" placeholder="label" aria-label="label" id="label" />
-        <input onChange={(e) => handleInput(e)} className="px-4 py-2 rounded font-semibold w-full md:w-48 bg-lime-500 text-white border-2 border-white placeholder:text-white focus:outline-none appearance-none" type="url" placeholder="icon" aria-label="icon" id="icon" />
+        <input onChange={(e) => handleInput(e)} className="px-4 py-2 rounded font-semibold w-full md:w-48 bg-lime-600 text-white border-2 border-white placeholder:text-white focus:outline-none appearance-none" type="text" placeholder="label" aria-label="label" id="label" />
+        <input onChange={(e) => handleInput(e)} className="px-4 py-2 rounded font-semibold w-full md:w-48 bg-lime-600 text-white border-2 border-white placeholder:text-white focus:outline-none appearance-none" type="url" placeholder="icon" aria-label="icon" id="icon" />
         <button type="submit" className="bg-white text-lime-500 hover:bg-transparent hover:text-white hover:border-white px-6 py-2 rounded-full font-semibold w-32 transition-colors border-2 border-transparent">ADD</button>
       </div>
     </form>
