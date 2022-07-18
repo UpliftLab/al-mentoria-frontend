@@ -40,7 +40,6 @@ const MentorsList = () => {
 
       <h2 className="font-bold text-xl">
         {mentor.name}
-        {mentor.id}
       </h2>
 
       <hr className="mx-auto border-t-4 border-dotted w-32" />
