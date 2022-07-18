@@ -1,4 +1,4 @@
-import AddReservationPage from '../features/add-reservation/addReservationPage';
+import AddReservationPage from '../features/add-reservation/AddReservationPage';
 
 const AddReservation = () => (<AddReservationPage />);
 
