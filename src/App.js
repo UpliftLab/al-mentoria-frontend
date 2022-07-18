@@ -41,7 +41,7 @@ const App = () => {
     <div id="app" className="h-screen text-gray-700 flex relative">
       <BrowserRouter>
         <Header />
-        <main className="h-screen w-full overflow-y-scroll flex relative">
+        <main className="h-screen w-full overflow-y-auto relative">
           <Routes>
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignunPage />} />

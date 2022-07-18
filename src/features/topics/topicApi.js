@@ -59,7 +59,7 @@ export async function deleteTopicInApi(data) {
   });
 
   if (!response || response.status !== 204) {
-    throw new Error('You are not authorized to make this request');
+    throw new Error('Failed to delete!');
   }
 
   return id;

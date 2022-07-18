@@ -54,11 +54,13 @@ const Topics = () => {
   };
 
   return (
-    <div className="flex flex-wrap py-6 justify-start gap-2 w-fit">
-      <div className={`absolute origin-center bottom-1 left-0 w-[calc(100%-8px)] mx-1 sm:bottom-12 sm:w-96 sm:left-[calc(50%-12rem)] bg-white px-16 py-14 rounded-md text-center shadow-lg ${(open.open ? 'z-10 block' : '-z-10 hidden')}`}>
-        <h1 className="text-xl mb-4 font-bold text-slate-500">Do you Want DELETE?</h1>
-        <button type="button" onClick={() => setOpen({ open: false, id: null })} className="bg-lime-600 px-4 py-2 rounded-md text-md text-white">CANCEL</button>
-        <button type="button" onClick={() => handleDeleteTopic(open.id)} className="bg-red-500 px-7 py-2 ml-2 rounded-md text-md text-white font-semibold">DELETE</button>
+    <div className="flex flex-wrap justify-center gap-2 w-fit">
+      <div className={`fixed inset-0 h-full w-full bg-black/80 grid place-content-center backdrop-blur-sm ${(open.open ? 'z-10 block' : '-z-10 hidden')}`}>
+        <div className="bg-white  rounded-md text-center shadow-lg p-4">
+          <h1 className="text-xl mb-4 font-semibold">Do you really want to delete me?</h1>
+          <button type="button" onClick={() => setOpen({ open: false, id: null })} className="bg-lime-600 px-4 py-2 rounded-md text-white">CANCEL</button>
+          <button type="button" onClick={() => handleDeleteTopic(open.id)} className="bg-red-500 px-7 py-2 ml-2 rounded-md text-white font-semibold">DELETE</button>
+        </div>
       </div>
       {
         topics.map((topic) => (
