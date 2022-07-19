@@ -30,8 +30,25 @@ const AddMentorPage = () => {
     }
   }, [userStatus]);
 
+  const isValidHttpUrl = (string) => {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isValidHttpUrl(e.target.elements.photo.value)) {
+      toast.error('Photo should be a valid url.');
+      return;
+    }
 
     await dispatch(addMentorAsync({
       name: e.target.elements.name.value,
@@ -95,6 +112,7 @@ const AddMentorPage = () => {
             id="bio"
             rows="10"
             placeholder="Enter bio here ..."
+            maxLength={250}
             required
           />
         </label>
