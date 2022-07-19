@@ -1,14 +1,32 @@
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from '@types/react';
 import Button from '../button/Button';
 import { addMentorAsync } from './addMentorSlice';
+import statusHandling from '../user/statusHandling';
+import userSlice from '../user/userSlice';
 
 const AddMentorPage = () => {
   const dispatch = useDispatch();
-  const { status: userStatus, token } = useSelector((state) => state.user);
+  const { status: userStatus, token, role } = useSelector((state) => state.user);
   const { status: addMentorStatus } = useSelector((state) => state.addMentor);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const [stay, error] = statusHandling(userStatus);
+    if (!stay) {
+      if (error) {
+        toast.error(error);
+      }
+      dispatch(userSlice.actions.signOut());
+      navigate('/signin');
+    }
+    if (role !== 'admin') {
+      toast.error('You must be admin to add a mentor');
+      navigate('/');
+    }
+  }, [userStatus]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
