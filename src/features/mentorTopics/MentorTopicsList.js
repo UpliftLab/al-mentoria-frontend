@@ -23,10 +23,10 @@ const MentorTopicsList = () => {
               <img src={icon} alt={`${label}'icon`} className="w-8 h-8 object-contain" onError={iconHandleError} />
               <p className="grow">{label}</p>
               <Rating
-                step="0.5"
+                step={1}
                 initialRating={rating}
                 readonly
-                stop="2.5"
+                stop={5}
                 fractions={2}
                 emptySymbol={<BsStar color="#F4C362" />}
                 fullSymbol={<BsStarFill color="#F4C362" />}

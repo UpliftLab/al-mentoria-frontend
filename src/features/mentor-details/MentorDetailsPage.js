@@ -82,10 +82,10 @@ const MentorDetailsPage = () => {
                           <h3 className="grow">{mentorDetail.topic.label}</h3>
                           <div>
                             <Rating
-                              step="0.5"
+                              step={1}
                               initialRating={mentorDetail.rating}
                               readonly
-                              stop="2.5"
+                              stop={5}
                               fractions={2}
                               emptySymbol={<BsStar color="#F4C362" />}
                               fullSymbol={<BsStarFill color="#F4C362" />}
