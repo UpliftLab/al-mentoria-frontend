@@ -37,4 +37,4 @@ export const addMentorSlice = createSlice({
   },
 });
 
-export default addMentorAsync.reducer;
+export default addMentorSlice.reducer;
