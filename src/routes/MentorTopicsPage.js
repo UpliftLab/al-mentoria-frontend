@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../features/loading/loading';
 import MentorTopics from '../features/mentorTopics/MentorTopics';
 import { userStatus as USER_STATE } from '../features/user/userSlice';
+import MentorTopicsSlice from '../features/mentorTopics/mentorTopicsSlice';
 
 const MentorTopicsPage = () => {
   const { status: userStatus, role: userRole } = useSelector((state) => state.user);
   const [status, setStatus] = useState('INITIALIZED');
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (userStatus === USER_STATE.unauthenticated
@@ -28,6 +30,10 @@ const MentorTopicsPage = () => {
       }
     }
   }, [userStatus]);
+
+  useEffect(() => () => {
+    dispatch(MentorTopicsSlice.actions.cleanup());
+  }, []);
 
   if (status === 'AUTHORIZED') {
     return (

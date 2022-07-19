@@ -34,6 +34,9 @@ export const addMentorTopicAsync = createAsyncThunk(
 const mentorTopicsSlice = createSlice({
   name: 'mentorTopics',
   initialState,
+  reducers: {
+    cleanup: () => initialState,
+  },
   extraReducers: {
     [fetchMentorTopicsAsync.pending]: (state) => {
       state.status = 'FETCHING';
