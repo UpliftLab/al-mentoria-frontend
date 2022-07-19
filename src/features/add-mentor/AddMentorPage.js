@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Button from '../button/Button';
 import { addMentorAsync } from './addMentorSlice';
 import statusHandling from '../user/statusHandling';
-import userSlice, { userStatus } from '../user/userSlice';
+import userSlice, { userStatus as USERSTATUS } from '../user/userSlice';
 import { status } from '../add-reservation/addReservationSlice';
 import Loading from '../loading/loading';
 
@@ -25,7 +25,7 @@ const AddMentorPage = () => {
       navigate('/signin');
       return;
     }
-    if (userStatus === userStatus.authenticated && role !== 'admin') {
+    if (userStatus === USERSTATUS.authenticated && role !== 'admin') {
       toast.error('You must be admin to add a mentor');
       navigate('/');
     }
