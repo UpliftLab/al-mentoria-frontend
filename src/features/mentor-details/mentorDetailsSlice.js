@@ -17,6 +17,9 @@ export const fetchMentorAsync = createAsyncThunk(
 export const mentorDetailsSlice = createSlice({
   name: 'mentorDetails',
   initialState,
+  reducers: {
+    cleanUp: () => initialState,
+  },
   extraReducers: {
     [fetchMentorAsync.pending]: (state) => {
       state.status = 'loading';
