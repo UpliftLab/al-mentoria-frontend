@@ -1,4 +1,6 @@
 import React from 'react';
+import { BsStar, BsStarFill } from 'react-icons/bs';
+import Rating from 'react-rating';
 import { useSelector } from 'react-redux';
 
 import ImageNotFound from '../../images/image-not-found.png';
@@ -16,10 +18,19 @@ const MentorTopicsList = () => {
     if (mentorTopics.length) {
       return (
         <ul className="flex flex-col items-stretch w-80 gap-4">
-          {mentorTopics.map(({ topic: { label, icon } }) => (
-            <li className="flex items-center bg-white p-2 rounded" key={label}>
+          {mentorTopics.map(({ rating, topic: { label, icon } }) => (
+            <li className="flex items-center gap-2 bg-white p-2 rounded" key={label}>
               <img src={icon} alt={`${label}'icon`} className="w-8 h-8 object-contain" onError={iconHandleError} />
-              {label}
+              <p className="grow">{label}</p>
+              <Rating
+                step="0.5"
+                initialRating={rating}
+                readonly
+                stop="2.5"
+                fractions={2}
+                emptySymbol={<BsStar color="#F4C362" />}
+                fullSymbol={<BsStarFill color="#F4C362" />}
+              />
             </li>
           ))}
         </ul>
