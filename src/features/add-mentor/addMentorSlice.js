@@ -1,13 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { status } from '../add-reservation/addReservationSlice';
+import addMentorAPI from './addMentorAPI';
 
 export const addMentorAsync = createAsyncThunk(
   'addMentor',
-  async ({ name, photo, bio }) => {
+  async ({
+    name, photo, bio, token,
+  }) => {
     const result = await addMentorAPI({
       name,
       photo,
       bio,
+      token,
     });
     return result;
   },
