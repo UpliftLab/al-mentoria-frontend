@@ -55,10 +55,10 @@ const AddMentorPage = () => {
       photo: e.target.elements.photo.value,
       bio: e.target.elements.bio.value,
       token,
-    })).unwrap().then((response) => {
-      if (response) {
+    })).unwrap().then((mentorID) => {
+      if (mentorID !== null) {
         toast.success('Mentor Created Successfully');
-        navigate('/reservations');
+        navigate(`/mentors/${mentorID}`);
       } else {
         toast.error('Error Creating Mentor, Try again later.');
       }

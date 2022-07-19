@@ -17,7 +17,13 @@ const bookMentorAPI = async ({
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
-  }).then((response) => response.status === 201);
+  }).then(async (response) => {
+    if (response.status === 201) {
+      const data = await response.json();
+      return data.data.id;
+    }
+    return null;
+  });
   return result;
 };
 
