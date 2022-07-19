@@ -22,9 +22,6 @@ const MentorDetailsPage = () => {
     dispatch(fetchMentorAsync(id))
       .unwrap()
       .then((data) => {
-        if (data?.mentor_topics.length === 0) {
-          toast.error('No topics found for this mentor');
-        }
         if (data === undefined) {
           toast.error('Mentor not found');
           navigate('/mentors');
@@ -50,7 +47,7 @@ const MentorDetailsPage = () => {
           <div className="grow md:w-2/5 flex items-center justify-center px-10">
             <img
               src={mentor.photo}
-              className="h-4/5 object-contain block rounded-lg shadow-2xl"
+              className="h-4/5 object-cover block rounded-lg shadow-2xl"
               alt="Mentor"
             />
           </div>
@@ -102,6 +99,15 @@ const MentorDetailsPage = () => {
                 </div>
               </div>
             )}
+            {
+              mentor.mentor_topics.length === 0
+              && (
+                <div className="flex w-full justify-center">
+                  <p>No topics found for this mentor</p>
+                </div>
+              )
+
+            }
           </div>
         </div>
       )}
