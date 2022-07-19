@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import fetchMentorTopics from './MentorTopicsAPI';
+import fetchMentorTopics, { addMentorTopic } from './MentorTopicsAPI';
 
 /**
    * Component status:
@@ -17,6 +17,16 @@ export const fetchMentorTopicsAsync = createAsyncThunk(
   'mentorTopics/fetchTopics',
   async ({ id, token }) => {
     const data = await fetchMentorTopics(id, token);
+    return data;
+  },
+);
+
+export const addMentorTopicAsync = createAsyncThunk(
+  'mentorTopics/addMentorTopic',
+  async ({
+    mentorId, topicId, rating, token,
+  }) => {
+    const data = addMentorTopic(mentorId, topicId, rating, token);
     return data;
   },
 );

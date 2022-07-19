@@ -18,8 +18,8 @@ const MentorTopicsList = () => {
     if (mentorTopics.length) {
       return (
         <ul className="flex flex-col items-stretch w-80 gap-4">
-          {mentorTopics.map(({ rating, topic: { label, icon } }) => (
-            <li className="flex items-center gap-2 bg-white p-2 rounded" key={label}>
+          {mentorTopics.map(({ id, rating, topic: { label, icon } }) => (
+            <li className="flex items-center gap-2 bg-white p-2 rounded" key={id}>
               <img src={icon} alt={`${label}'icon`} className="w-8 h-8 object-contain" onError={iconHandleError} />
               <p className="grow">{label}</p>
               <Rating
