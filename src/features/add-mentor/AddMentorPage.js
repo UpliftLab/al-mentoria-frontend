@@ -1,11 +1,13 @@
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from '@types/react';
+import { useEffect } from 'react';
 import Button from '../button/Button';
 import { addMentorAsync } from './addMentorSlice';
 import statusHandling from '../user/statusHandling';
 import userSlice from '../user/userSlice';
+import { status } from '../add-reservation/addReservationSlice';
+import Loading from '../loading/loading';
 
 const AddMentorPage = () => {
   const dispatch = useDispatch();
@@ -98,7 +100,7 @@ const AddMentorPage = () => {
         </label>
 
         <div className="flex items-center justify-between">
-          <Button child="Add Mentor" isSubmit />
+          <Button child={addMentorStatus === status.loading ? <Loading /> : 'Add Mentor'} isSubmit />
         </div>
       </form>
     </div>
