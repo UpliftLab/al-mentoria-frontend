@@ -19,6 +19,7 @@ import SigninPage from './routes/SigninPage';
 import SignunPage from './routes/SignupPage';
 import userSlice, { authenticateAsync } from './features/user/userSlice';
 import TopicsPage from './routes/TopicsPage';
+import MentorTopicsPage from './routes/MentorTopicsPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,10 @@ const App = () => {
             <Route path="/signup" element={<SignunPage />} />
             <Route path="/mentors" element={<Outlet />}>
               <Route index element={<MentorsPage />} />
-              <Route path=":id" element={<MentorDetails />} />
+              <Route path=":id" element={<Outlet />}>
+                <Route index element={<MentorDetails />} />
+                <Route path="topics" element={<MentorTopicsPage />} />
+              </Route>
             </Route>
             <Route path="/mentors/new" element={<AddMentor />} />
             <Route path="/reservations" element={<Reservations />} />
