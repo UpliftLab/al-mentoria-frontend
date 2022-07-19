@@ -31,8 +31,8 @@ DirectionalButton.propTypes = {
 DirectionalButton.defaultProps = {
   left: false,
   disabled: false,
+  onClick: () => { },
   twClasses: '',
-  onClick: () => {},
 };
 
 export default DirectionalButton;
