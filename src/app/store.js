@@ -7,6 +7,7 @@ import addReservationReducer from '../features/add-reservation/addReservationSli
 import addMentorReducer from '../features/add-mentor/addMentorSlice';
 import topicSlice from '../features/topics/topicSlice';
 import userSlice from '../features/user/userSlice';
+import mentorTopicsSlice from '../features/mentorTopics/mentorTopicsSlice';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     addMentor: addMentorReducer,
     topic: topicSlice.reducer,
     mentors: mentorsSlice.reducer,
+    mentorTopics: mentorTopicsSlice.reducer,
   },
 });
 
