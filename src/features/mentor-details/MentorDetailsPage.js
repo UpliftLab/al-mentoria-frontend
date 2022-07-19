@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoIosArrowDropright } from 'react-icons/io';
 import { BsStarFill, BsStar } from 'react-icons/bs';
+import { FaPlusCircle } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { toast } from 'react-toastify';
 import {
@@ -12,6 +13,7 @@ import Button from '../button/Button';
 import DirectionalButton from '../button/DirectionalButton';
 
 const MentorDetailsPage = () => {
+  const userRole = useSelector((state) => state.user.role);
   const { mentor } = useSelector((state) => state.mentorDetails);
   const { id } = useParams();
 
@@ -61,32 +63,43 @@ const MentorDetailsPage = () => {
             <p className="mb-10 text-center md:text-right">{mentor.bio}</p>
             {mentor.mentor_topics.length > 0 && (
               <div className="flex flex-col grow">
-                <ul className="grow">
-                  {mentor.mentor_topics.map((mentorDetail) => (
-                    <li
-                      key={mentorDetail.id}
-                      className="odd:bg-gray-200 py-2 px-4"
-                    >
-                      <div className="flex items-center justify-center">
-                        <div className="w-12 mr-2">
-                          <img src={mentorDetail.topic.icon} alt="Topic" />
+                <div className="grow flex flex-col gap-2">
+                  <div className="flex justify-center items-center gap-4">
+                    <h3 className="font-bold">
+                      Available topics
+                    </h3>
+                    {userRole === 'admin' && (
+                      <Link to="topics" className="p-2 text-lime-500"><FaPlusCircle /></Link>
+                    )}
+                  </div>
+                  <ul className="rounded-2xl grow-0 overflow-hidden">
+                    {mentor.mentor_topics.map((mentorDetail) => (
+                      <li
+                        key={mentorDetail.id}
+                        className="odd:bg-gray-200 bg-gray-100 py-2 px-4"
+                      >
+                        <div className="flex items-center justify-center">
+                          <div className="w-12 mr-2">
+                            <img src={mentorDetail.topic.icon} alt="Topic" />
+                          </div>
+                          <h3 className="grow">{mentorDetail.topic.label}</h3>
+                          <div>
+                            <Rating
+                              step="0.5"
+                              initialRating={mentorDetail.rating}
+                              readonly
+                              stop="2.5"
+                              fractions={2}
+                              emptySymbol={<BsStar color="#F4C362" />}
+                              fullSymbol={<BsStarFill color="#F4C362" />}
+                            />
+                          </div>
                         </div>
-                        <h3 className="grow">{mentorDetail.topic.label}</h3>
-                        <div>
-                          <Rating
-                            step="0.5"
-                            initialRating={mentorDetail.rating}
-                            readonly
-                            stop="2.5"
-                            fractions={2}
-                            emptySymbol={<BsStar color="#F4C362" />}
-                            fullSymbol={<BsStarFill color="#F4C362" />}
-                          />
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <div className="my-10 flex justify-center">
                   <Button
                     child={
