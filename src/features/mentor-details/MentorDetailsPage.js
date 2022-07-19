@@ -58,18 +58,18 @@ const MentorDetailsPage = () => {
               {mentor.name}
             </h1>
             <p className="mb-10 text-center md:text-right">{mentor.bio}</p>
-            {mentor.mentor_topics.length > 0 && (
-              <div className="flex flex-col grow">
-                <div className="grow flex flex-col gap-2">
-                  <div className="flex justify-center items-center gap-4">
-                    <h3 className="font-bold">
-                      Available topics
-                    </h3>
-                    {userRole === 'admin' && (
-                      <Link to="topics" className="p-2 text-lime-500"><FaPlusCircle /></Link>
-                    )}
-                  </div>
-                  <ul className="rounded-2xl grow-0 overflow-hidden">
+            <div className="flex flex-col grow">
+              <div className="grow flex flex-col gap-2">
+                <div className="flex justify-center items-center gap-4">
+                  <h3 className="font-bold">
+                    Available topics
+                  </h3>
+                  {userRole === 'admin' && (
+                    <Link to="topics" className="p-2 text-lime-500"><FaPlusCircle /></Link>
+                  )}
+                </div>
+                {mentor.mentor_topics.length > 0 && (
+                  <ul className="grow-0 rounded-2xl  overflow-hidden">
                     {mentor.mentor_topics.map((mentorDetail) => (
                       <li
                         key={mentorDetail.id}
@@ -95,8 +95,17 @@ const MentorDetailsPage = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                )}
+                {
+                  mentor.mentor_topics.length === 0 && (
+                    <div className="flex w-full justify-center">
+                      <p>No topics found for this mentor</p>
+                    </div>
+                  )
+                }
+              </div>
 
+              {mentor.mentor_topics.length && (
                 <div className="my-10 flex justify-center">
                   <Button
                     child={
@@ -110,17 +119,8 @@ const MentorDetailsPage = () => {
                     onClick={addReservation}
                   />
                 </div>
-              </div>
-            )}
-            {
-              mentor.mentor_topics.length === 0
-              && (
-                <div className="flex w-full justify-center">
-                  <p>No topics found for this mentor</p>
-                </div>
-              )
-
-            }
+              )}
+            </div>
           </div>
         </div>
       )}
