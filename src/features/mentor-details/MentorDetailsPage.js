@@ -59,9 +59,9 @@ const MentorDetailsPage = () => {
             </h1>
             <p className="mb-10 text-center md:text-right">{mentor.bio}</p>
             <div className="flex flex-col grow">
-              <div className="grow flex flex-col gap-2">
-                <div className="flex justify-center items-center gap-4">
-                  <h3 className="font-bold">
+              <div className="grow flex flex-col rounded-2xl overflow-hidden border">
+                <div className="flex justify-center items-center gap-4 border-b">
+                  <h3 className="font-bold my-4">
                     Available topics
                   </h3>
                   {userRole === 'admin' && (
@@ -69,7 +69,7 @@ const MentorDetailsPage = () => {
                   )}
                 </div>
                 {mentor.mentor_topics.length > 0 && (
-                  <ul className="grow-0 rounded-2xl  overflow-hidden">
+                  <ul className="grow-0">
                     {mentor.mentor_topics.map((mentorDetail) => (
                       <li
                         key={mentorDetail.id}
@@ -96,16 +96,14 @@ const MentorDetailsPage = () => {
                     ))}
                   </ul>
                 )}
-                {
-                  mentor.mentor_topics.length === 0 && (
-                    <div className="flex w-full justify-center">
-                      <p>No topics found for this mentor</p>
-                    </div>
-                  )
-                }
+                {(mentor.mentor_topics.length === 0) && (
+                  <div className="text-center text-sm p-4">
+                    <p>No topics found!</p>
+                  </div>
+                )}
               </div>
 
-              {mentor.mentor_topics.length && (
+              {mentor.mentor_topics.length > 0 && (
                 <div className="my-10 flex justify-center">
                   <Button
                     child={
