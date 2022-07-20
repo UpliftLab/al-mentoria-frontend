@@ -44,7 +44,9 @@ const MentorTopicsPage = () => {
   }
 
   return (
-    <Loading />
+    <div className="h-full grid place-content-center">
+      <Loading />
+    </div>
   );
 };
 
