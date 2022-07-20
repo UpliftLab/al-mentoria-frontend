@@ -56,7 +56,6 @@ const MentorTopicForm = () => {
         toast.error('Failed to add topic!');
         formDisabled.current = false;
       });
-    toast.info('Adding...');
   };
 
   if (status === 'FETCHED') {
