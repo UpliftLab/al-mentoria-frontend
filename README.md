@@ -24,7 +24,7 @@
   </a>
   <p align="center">
     <br />
-    <a href="https://apidocs"><strong>Explore the API docs »</strong></a>
+    <a href="https://apidocs"><strong>Explore the website »</strong></a>
     <br />
     <br />
     <a href="./todo">View Demo</a>
@@ -70,7 +70,7 @@
 
 ### Sneak peak
 
-<img alt="ERD diagram" src="https://github.com/UpliftLab/al-mentoria-docs/blob/9fcf7f54b99a1c4264cbcfa5644e5526cf02b2a7/erd.png">
+<img alt="Screenshots" src="https://github.com/UpliftLab/al-mentoria-docs/blob/9fcf7f54b99a1c4264cbcfa5644e5526cf02b2a7/erd.png">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -79,10 +79,10 @@
 
 
 <ul style="display: flex; gap: 6px; justify-content: center">
-<img src="https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white"/>
-<img src="https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white"/>
-<img src="https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white"/>
-<img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+<img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"/>
+<img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
 <br></br>
 </ul>
 
@@ -97,45 +97,34 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-- POSTGRESQL *~> 14.x*
-- Ruby *~> 3.1.x*
-
+- Node: v16.13.1
+- Javascript enabled browser
 
 ### Installation
 
 1. Clone the repo:
    ```sh
-   git clone git@github.com:UpliftLab/al-mentoria-backend.git
+   git clone git@github.com:UpliftLab/al-mentoria-frontend.git
    ```
 2. go to the project folder: 
    ```sh
-   cd al-mentoria-backend
+   cd al-mentoria-frontend
    ```
 3. Install the dependencies:
    ```sh
-   bundle install
+   npm install
    ```
-4. Create database:
+4. Change the backend server's port in the `src/config.json` file:
    ```sh
-   rails db:create
+    {
+      "BASE_URL": "{website}:{port}",
+    }
    ```
-5. Run the migrations:
+5. Start the server:
    ```sh
-   rails db:migrate
+   npm start
    ```
-6. Seed the database:
-   ```sh
-   rails db:seed
-   ```
-7. Set up the environment variable (to-do):
-   ```sh
-   to-do
-   ```
-8. Launch the server:
-   ```sh
-   rails s -p 8000
-   ```
-9. Enjoy
+6. Enjoy
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -145,7 +134,7 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_For more Info on how to use the API, please refer to the [al mentoria API Documentation](https://to-do)_
+_For an easy access to the website please use [this link](https://to-do)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -155,7 +144,7 @@ _For more Info on how to use the API, please refer to the [al mentoria API Docum
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Please, take a look at [open issues](https://github.com/UpliftLab/al-mentoria-backend/issues) for a full list of proposed features (and known issues).
+Please, take a look at [open issues](https://github.com/UpliftLab/al-mentoria-frontend/issues) for a full list of proposed features (and known issues).
 
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
