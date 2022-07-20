@@ -27,11 +27,11 @@
     <a href="https://almentoria.herokuapp.com/"><strong>Explore the website »</strong></a>
     <br />
     <br />
-    <a href="./todo">View Demo</a>
+    <a href="https://github.com/UpliftLab/al-mentoria-frontend">View Demo</a>
     ·
-    <a href="./todo">Report Bug</a>
+    <a href="https://github.com/UpliftLab/al-mentoria-frontend/issues">Report Bug</a>
     ·
-    <a href="./todo">Request Feature</a>
+    <a href="https://github.com/UpliftLab/al-mentoria-frontend/issues">Request Feature</a>
   </p>
 </div>
 
@@ -93,6 +93,8 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
+*This project depends on this [API backend](https://github.com/UpliftLab/al-mentoria-backend)*
+
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -134,8 +136,9 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_For an easy access to the website please use [this link](https://to-do)_
+_For an easy access to the website please use [this link](https://almentoria.herokuapp.com/)_
 
+_
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -193,7 +196,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Original design by [Murat Korkmaz ](https://www.behance.net/muratk).
+* Original design by [Murat Korkmaz](https://www.behance.net/muratk).
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [React Icons](https://react-icons.github.io/react-icons/search)
@@ -204,6 +207,6 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the **A-GPL** License. See [`LICENSE`](./LICENSE) for more information.
+Distributed under the **AGPL** License. See [`LICENSE`](./LICENSE) for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
