@@ -102,7 +102,6 @@ const MentorDetailsPage = () => {
                   </div>
                 )}
               </div>
-
               {mentor.mentor_topics.length > 0 && (
                 <div className="my-10 flex justify-center">
                   <Button
@@ -119,6 +118,14 @@ const MentorDetailsPage = () => {
                 </div>
               )}
             </div>
+            {
+              mentor.mentor_topics.length === 0
+              && (
+                <div className="flex w-full justify-center">
+                  <p>No topics found for this mentor</p>
+                </div>
+              )
+            }
           </div>
         </div>
       )}

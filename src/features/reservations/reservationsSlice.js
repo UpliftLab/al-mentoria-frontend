@@ -38,16 +38,15 @@ const reservationsSlice = createSlice({
       state.reservationStatus = 'loading';
     },
     [fetchReservationsAsync.fulfilled]: (state, action) => {
+      const now = new Date().setHours(0, 0, 0, 0);
       const oldData = action.payload?.filter((reservation) => {
-        const now = new Date();
-        const reservationDate = new Date(reservation.date);
+        const reservationDate = new Date(reservation.date).setHours(0, 0, 0, 0);
         return reservationDate < now;
       });
       state.reservations.old = oldData;
       const newData = action.payload?.filter((reservation) => {
-        const now = new Date();
-        const reservationDate = new Date(reservation.date);
-        return reservationDate > now;
+        const reservationDate = new Date(reservation.date).setHours(0, 0, 0, 0);
+        return reservationDate >= now;
       });
       state.reservations.data = newData;
       state.reservationStatus = 'success';
