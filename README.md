@@ -24,7 +24,7 @@
   </a>
   <p align="center">
     <br />
-    <a href="https://apidocs"><strong>Explore the website »</strong></a>
+    <a href="https://almentoria.herokuapp.com/"><strong>Explore the website »</strong></a>
     <br />
     <br />
     <a href="./todo">View Demo</a>
@@ -70,7 +70,7 @@
 
 ### Sneak peak
 
-<img alt="Screenshots" src="https://github.com/UpliftLab/al-mentoria-docs/blob/9fcf7f54b99a1c4264cbcfa5644e5526cf02b2a7/erd.png">
+<img alt="Screenshots" src="https://user-images.githubusercontent.com/20567503/180013479-d3013553-0aa4-42d8-b938-97f58f9d5791.png">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
