@@ -50,7 +50,7 @@ const MentorsList = () => {
 
       <ul className="flex flex-wrap gap-2 text-xs text-gray-400">
         {mentor.mentor_topics.map((mentorTopic) => (
-          <li className="border py-1 px-2 rounded-lg hover:text-gray-600 hover:border-gray-300" key={mentorTopic.topic.id}>
+          <li className="border py-1 px-2 rounded-lg hover:text-gray-600 hover:border-gray-300" key={`mentorTopic-${mentorTopic.id}`}>
             {mentorTopic.topic.label}
           </li>
         ))}
