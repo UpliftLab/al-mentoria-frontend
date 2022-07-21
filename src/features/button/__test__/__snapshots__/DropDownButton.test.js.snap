@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDownButton renders correctly in the DOM 1`] = `
+<select
+  className="px-6 py-2 rounded-full font-semibold min-w-[200px] bg-lime-500 text-white border-2 border-white focus:outline-none appearance-none"
+  defaultValue=""
+  id="DropDownID"
+  onChange={[Function]}
+  required={false}
+  style={
+    Object {
+      "backgroundImage": "url(caret-down.svg)",
+      "backgroundPosition": "right 1rem center",
+      "backgroundRepeat": "no-repeat",
+      "backgroundSize": "1.2rem",
+    }
+  }
+>
+  <option
+    disabled={true}
+    value=""
+  >
+    Select a Topic
+  </option>
+  <option
+    value={0}
+  >
+    text 0
+  </option>
+  <option
+    value={1}
+  >
+    text 1
+  </option>
+  <option
+    value={2}
+  >
+    text 2
+  </option>
+  <option
+    value={3}
+  >
+    text 3
+  </option>
+  <option
+    value={4}
+  >
+    text 4
+  </option>
+  <option
+    value={5}
+  >
+    text 5
+  </option>
+  <option
+    value={6}
+  >
+    text 6
+  </option>
+  <option
+    value={7}
+  >
+    text 7
+  </option>
+  <option
+    value={8}
+  >
+    text 8
+  </option>
+  <option
+    value={9}
+  >
+    text 9
+  </option>
+</select>
+`;
