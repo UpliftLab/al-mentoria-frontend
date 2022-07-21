@@ -49,6 +49,7 @@ const SigninForm = () => {
             type="text"
             onChange={handleInput}
             placeholder="Email"
+            required
           />
         </label>
 
@@ -62,18 +63,13 @@ const SigninForm = () => {
             name="password"
             type="password"
             onChange={handleInput}
-            placeholder="******************"
+            placeholder="Password"
+            required
           />
         </label>
 
         <div className="flex items-center justify-between">
           <Button child="Sign In" isSubmit />
-          <a
-            className="inline-block align-baseline font-bold text-sm text-lime-500 hover:text-lime-600"
-            href="/blah"
-          >
-            Forgot Password?
-          </a>
         </div>
       </form>
     </div>

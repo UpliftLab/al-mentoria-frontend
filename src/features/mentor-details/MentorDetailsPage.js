@@ -43,21 +43,21 @@ const MentorDetailsPage = () => {
   };
 
   return (
-    <div className="relative flex flex-col w-full h-screen md:py-12">
+    <div className="relative flex flex-col w-full h-screen lg:py-12">
       {mentor && (
-        <div className="flex flex-col md:flex-row grow h-full md:pt-20 md:pb-10 ">
-          <div className="grow md:w-2/5 flex items-center justify-center px-10">
+        <div className="flex flex-col lg:flex-row grow h-full lg:pt-20 lg:pb-10 ">
+          <div className="grow lg:w-2/5 flex items-center justify-center px-10 rounded-full aspect-square">
             <img
               src={mentor.photo}
-              className="h-4/5 object-cover block rounded-lg shadow-2xl"
+              className="object-cover block rounded-full aspect-square w-100"
               alt="Mentor"
             />
           </div>
-          <div className="flex flex-col w-full md:w-72 md:mr-20 py-10 px-10 md:px-0">
-            <h1 className="text-center md:text-right font-bold text-2xl">
+          <div className="flex flex-col w-full lg:w-72 lg:mr-20 py-10 px-10 lg:px-0">
+            <h1 className="text-center lg:text-right font-bold text-2xl">
               {mentor.name}
             </h1>
-            <p className="mb-10 text-center md:text-right">{mentor.bio}</p>
+            <p className="mb-10 text-center lg:text-right">{mentor.bio}</p>
             <div className="flex flex-col grow">
               <div className="grow flex flex-col rounded-2xl overflow-hidden border">
                 <div className="flex justify-center items-center gap-4 border-b">
@@ -131,7 +131,7 @@ const MentorDetailsPage = () => {
       )}
       <DirectionalButton
         left
-        twClasses="hidden md:block fixed md:absolute left-0 bottom-10"
+        twClasses="block fixed lg:absolute left-0 bottom-10"
         onClick={goBack}
       />
     </div>
