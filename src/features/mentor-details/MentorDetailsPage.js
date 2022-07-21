@@ -131,7 +131,7 @@ const MentorDetailsPage = () => {
       )}
       <DirectionalButton
         left
-        twClasses="hidden lg:block fixed lg:absolute left-0 bottom-10"
+        twClasses="block fixed lg:absolute left-0 bottom-10"
         onClick={goBack}
       />
     </div>
