@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DirectionalButton renders correctly in the DOM 1`] = `
+<button
+  className="bg-lime-500 py-4 text-white rounded-l-full pr-8 pl-4 disabled:bg-gray-200 hover:bg-lime-400 transition-colors "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
+      Object {
+        "color": undefined,
+      }
+    }
+    viewBox="0 0 24 24"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A.998.998 0 0 0 5 3v18a1 1 0 0 0 .536.886zM7 4.909 17.243 12 7 19.091V4.909z"
+    />
+  </svg>
+</button>
+`;
