@@ -116,10 +116,10 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm install
    ```
-4. Change the backend server's port in the `src/config.json` file:
+4. Set the backend server address in the `src/config.json` file:
    ```sh
     {
-      "BASE_URL": "{website}:{port}",
+      "BASE_URL": "link_to_backend_server"
     }
    ```
 5. Start the server:
