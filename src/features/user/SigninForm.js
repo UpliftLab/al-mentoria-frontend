@@ -49,6 +49,7 @@ const SigninForm = () => {
             type="text"
             onChange={handleInput}
             placeholder="Email"
+            required
           />
         </label>
 
@@ -63,6 +64,7 @@ const SigninForm = () => {
             type="password"
             onChange={handleInput}
             placeholder="Password"
+            required
           />
         </label>
 
