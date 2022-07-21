@@ -62,7 +62,7 @@ const SigninForm = () => {
             name="password"
             type="password"
             onChange={handleInput}
-            placeholder="******************"
+            placeholder="Password"
           />
         </label>
 
