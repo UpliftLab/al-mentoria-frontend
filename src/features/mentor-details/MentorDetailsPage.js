@@ -46,10 +46,10 @@ const MentorDetailsPage = () => {
     <div className="relative flex flex-col w-full h-screen md:py-12">
       {mentor && (
         <div className="flex flex-col md:flex-row grow h-full md:pt-20 md:pb-10 ">
-          <div className="grow md:w-2/5 flex items-center justify-center px-10">
+          <div className="grow md:w-2/5 flex items-center justify-center px-10 rounded-full aspect-square">
             <img
               src={mentor.photo}
-              className="h-4/5 object-cover block rounded-lg shadow-2xl"
+              className="h-4/5 object-cover block rounded-full aspect-square"
               alt="Mentor"
             />
           </div>
