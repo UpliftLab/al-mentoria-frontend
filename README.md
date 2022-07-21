@@ -3,7 +3,7 @@
     <img alt="Microverse" src="https://img.shields.io/badge/-Microverse-blueviolet?style=flat-square">
   </a>
   <a href="./LICENSE">
-    <img alt="A-GPL Licensed" src="https://img.shields.io/badge/license-A--GPL-green">
+    <img alt="AGPL Licensed" src="https://img.shields.io/github/license/UpliftLab/al-mentoria-backend">
   </a>
   <a href="https://github.com/UpliftLab/al-mentoria-backend">
     <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/UpliftLab/al-mentoria-backend/dev?color=blue&style=flat-square">
@@ -66,13 +66,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-> **al mentoria** is a mentorship app. After creating an account, it allows to add your daily transactions given some categories. It also allows you add your own categories and list all the transactions belonging to that particular category.
+> **Al Mentoria** is a virtual space to connect with mentors that can help you with your technical as well as behavioral issues. If you are stuck somewhere and need a second look at things, make a reservation now.
 
 ### Sneak peak
 
 <img alt="Screenshots" src="https://user-images.githubusercontent.com/20567503/180013479-d3013553-0aa4-42d8-b938-97f58f9d5791.png">
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 ### Built With
@@ -86,7 +86,7 @@
 <br></br>
 </ul>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 
@@ -129,7 +129,7 @@ To get a local copy up and running follow these simple example steps.
 6. Enjoy
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 
@@ -138,8 +138,8 @@ To get a local copy up and running follow these simple example steps.
 
 _For an easy access to the website please use [this link](https://almentoria.herokuapp.com/)_
 
-_
-<p align="right">(<a href="#top">back to top</a>)</p>
+
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 <!-- CONTRIBUTING -->
@@ -160,7 +160,7 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 <!-- AUTHORS -->
@@ -189,7 +189,7 @@ Don't forget to give the project a star! Thanks again!
 - Website: [Coding Fries](https://codingfries.com)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/awais-amjed)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 
@@ -201,7 +201,7 @@ Don't forget to give the project a star! Thanks again!
 * [Img Shields](https://shields.io)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
 
 
 <!-- LICENSE -->
@@ -209,4 +209,4 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the **AGPL** License. See [`LICENSE`](./LICENSE) for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">⬆️</a></p>
