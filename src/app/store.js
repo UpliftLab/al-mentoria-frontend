@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import reservationsSlice from '../features/reservations/reservationsSlice';
 import mentorsSlice from '../features/mentors/mentorsSlice';
 import mentorDetailsReducer from '../features/mentor-details/mentorDetailsSlice';
@@ -11,7 +10,6 @@ import mentorTopicsSlice from '../features/mentorTopics/mentorTopicsSlice';
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
     reservations: reservationsSlice.reducer,
     mentorDetails: mentorDetailsReducer,
     user: userSlice.reducer,
