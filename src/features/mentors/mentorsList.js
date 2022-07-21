@@ -37,7 +37,7 @@ const MentorsList = () => {
   const shortBio = (bio) => `${bio.slice(0, 100)}...`;
 
   const items = mentors.map((mentor) => (
-    <Link to={`/mentors/${mentor.id}`} onDragStart={handleDragStart} key={mentor.id} className="flex flex-col gap-4 shrink-0 items-center text-center w-full">
+    <Link to={`/mentors/${mentor.id}`} onDragStart={handleDragStart} key={mentor.id} className="flex flex-col gap-4 shrink-0 items-center text-center w-full px-2">
       <img src={mentor.photo} className="aspect-square object-cover w-48 rounded-full" alt={mentor.name} />
 
       <h2 className="font-bold text-xl">
