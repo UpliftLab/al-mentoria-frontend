@@ -112,19 +112,19 @@ const Header = () => {
       <div className="flex flex-col gap-1 items-center">
         <ul className="flex">
           <li>
-            <SocialLink to="blah" icon={<FaTwitter className="w-4 h-4" />} />
+            <SocialLink to="https://twitter.com" icon={<FaTwitter className="w-4 h-4" />} />
           </li>
           <li>
-            <SocialLink to="blah" icon={<FaFacebookF className="w-4 h-4" />} />
+            <SocialLink to="https://facebook.com" icon={<FaFacebookF className="w-4 h-4" />} />
           </li>
           <li>
-            <SocialLink to="blah" icon={<FaInstagram className="w-4 h-4" />} />
+            <SocialLink to="https://instagram.com" icon={<FaInstagram className="w-4 h-4" />} />
           </li>
           <li>
-            <SocialLink to="blah" icon={<FaGithub className="w-4 h-4" />} />
+            <SocialLink to="https://github.com/UpliftLab/al-mentoria-frontend/" icon={<FaGithub className="w-4 h-4" />} />
           </li>
           <li>
-            <SocialLink to="blah" icon={<FaYoutube className="w-4 h-4" />} />
+            <SocialLink to="https://youtube.com" icon={<FaYoutube className="w-4 h-4" />} />
           </li>
         </ul>
         <p className="text-xs flex items-center gap-1">
