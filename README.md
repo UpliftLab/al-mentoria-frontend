@@ -24,7 +24,7 @@
   </a>
   <p align="center">
     <br />
-    <a href="https://almentoria.herokuapp.com/"><strong>Explore the website »</strong></a>
+    <a href="https://al-mentoria.herokuapp.com/"><strong>Explore the website »</strong></a>
     <br />
     <br />
     <a href="https://github.com/UpliftLab/al-mentoria-frontend">View Demo</a>
@@ -136,7 +136,7 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_For an easy access to the website please use [this link](https://almentoria.herokuapp.com/)_
+_For an easy access to the website please use [this link](https://al-mentoria.herokuapp.com/)_
 
 
 <p align="right"><a href="#top">⬆️</a></p>
