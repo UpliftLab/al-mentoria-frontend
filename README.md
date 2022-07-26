@@ -180,9 +180,9 @@ Don't forget to give the project a star! Thanks again!
 
 👤 **Mostafa Ahangarha**
 
-- GitHub: [@Mostafa](https://github.com/ahangarha)
-- LinkedIn: [Mostafa](https://www.linkedin.com/in/ahangarha/)
-- Twitter: [ahangarha](https://twitter.com/ahangarha)
+- GitHub: [@ahangarha](https://github.com/ahangarha)
+- LinkedIn: [ahangarha](https://www.linkedin.com/in/ahangarha/)
+- Twitter: [@ahangarha](https://twitter.com/ahangarha)
 
 👤 **Awais Amjed**
 - GitHub: [Awais Amjed](https://github.com/awais-amjed)
