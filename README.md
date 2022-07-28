@@ -24,7 +24,7 @@
   </a>
   <p align="center">
     <br />
-    <a href="https://almentoria.herokuapp.com/"><strong>Explore the website »</strong></a>
+    <a href="https://al-mentoria.herokuapp.com/"><strong>Explore the website »</strong></a>
     <br />
     <br />
     <a href="https://github.com/UpliftLab/al-mentoria-frontend">View Demo</a>
