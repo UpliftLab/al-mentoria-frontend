@@ -1,21 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Al Mentoria",
+  "name": "Al Mentoria - Find a mentor",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "64x64",
+      "src": "almentoria-logo.svg",
       "type": "image/png"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
