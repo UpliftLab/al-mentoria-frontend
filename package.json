@@ -18,13 +18,16 @@
     "react-scripts": "5.0.1",
     "react-test-renderer": "^18.2.0",
     "react-toastify": "^9.0.5",
+    "serve": "^14.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build",
     "lint": "eslint . & stylelint **/*.{css,scss}",
     "lint:fix": "eslint . --fix & stylelint **/*.{css,scss} --fix"
   },
